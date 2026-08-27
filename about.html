@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us — ARCA Creative Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/footer.css">
+<style>
+  :root{
+    --ink: #0a0d08; --ink-2: #121a0d; --moss-deep: #4c5a1e; --moss: #7c8f3a;
+    --moss-light: #aebd5f; --silver-1: #f7f7f2; --silver-2: #a9a9a1; --silver-3: #55554e;
+    --paper: #faf9f4; --paper-ink: #181c11;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter','Segoe UI',sans-serif; background:var(--paper); background-image:radial-gradient(rgba(24,28,17,0.035) 0.6px,transparent 0.6px);background-size:140px 140px;color:var(--paper-ink);overflow-x:hidden; }
+  .font-display{ font-family:'Bricolage Grotesque','Inter',sans-serif; }
+  
+  /* ── SMART HEADER ── */
+  #site-header{ position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(250,249,244,0.98);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 2px 20px rgba(0,0,0,0.08);transition:all 0.3s ease;padding:0.75rem 1.5rem;}
+  #site-header:hover{ box-shadow:0 4px 30px rgba(0,0,0,0.12); }
+  .arca-header-logo{ width:36px;height:36px;object-fit:contain;filter:none; }
+  .nav-link{ color:var(--paper-ink)!important;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:0.14em;position:relative;transition:color 0.3s; }
+  .nav-link:hover{ color:var(--moss)!important; }
+  .nav-link::after{ content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--moss);transition:width 0.3s; }
+  .nav-link:hover::after{ width:100%; }
+  .cta-btn{ background:linear-gradient(135deg,var(--moss-deep),var(--moss));color:white;border-radius:9999px;padding:0.65rem 1.5rem;font-weight:600;font-size:0.8rem;letter-spacing:0.05em;text-decoration:none;display:inline-block;transition:transform 0.3s,box-shadow 0.3s; }
+  .cta-btn:hover{ transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,143,58,0.35); }
+  
+  /* Page content */
+  .page-hero{
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+    height:70vh;
+    min-height:620px;
+    max-height:760px;
+    padding-top:120px;
+    padding-bottom:4rem;
+    display:flex;
+    align-items:center;
+    background:
+      radial-gradient(120% 90% at 82% 8%,rgba(124,143,58,0.2),transparent 55%),
+      radial-gradient(140% 100% at 10% 100%,rgba(76,90,30,0.35),transparent 60%),
+      linear-gradient(160deg,var(--ink) 0%,var(--ink-2) 55%,var(--ink) 100%);
+  }
+  .page-hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background:url('images/trans_logo.png') center 48% / min(58vw,680px) auto no-repeat;
+    opacity:1;
+    filter:drop-shadow(0 24px 45px rgba(0,0,0,0.35));
+    animation:pageLogoBreathe 5.5s ease-in-out infinite;
+    transform-origin:50% 50%;
+    will-change:transform;
+  }
+  @keyframes pageLogoBreathe{
+    0%,100%{ transform:scale(1) rotate(0deg); }
+    50%{ transform:scale(1.045) rotate(-1.8deg); }
+  }
+  .page-hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:radial-gradient(70% 80% at 50% 50%,transparent 20%,rgba(0,0,0,0.28) 100%);
+  }
+  .page-hero > .page-content{ position:relative;z-index:2;width:100%;padding:0 2rem; }
+  .page-hero .section-title{ color:var(--silver-1);text-shadow:0 8px 30px rgba(0,0,0,0.38); }
+  .page-hero .section-subtitle{ color:rgba(247,247,242,0.82); }
+  .page-hero > .page-content > p:first-child{ color:var(--moss-light) !important; }
+  #site-header{ background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none; }
+  #site-header .nav-link{ color:white !important; }
+  #site-header .arca-header-logo{ filter:brightness(0) invert(1); }
+  #site-header > a > span{ color:white !important; }
+  #site-header #mobile-menu-btn{ color:white; }
+  #site-header .cta-btn{ background:linear-gradient(135deg,var(--silver-1),var(--silver-2) 55%,var(--silver-1));color:var(--ink); }
+  #site-header.page-header-scrolled{ background:rgba(250,249,244,1);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 2px 20px rgba(0,0,0,0.08); }
+  #site-header.page-header-scrolled .nav-link{ color:var(--paper-ink) !important; }
+  #site-header.page-header-scrolled .arca-header-logo{ filter:none; }
+  #site-header.page-header-scrolled > a > span{ color:var(--paper-ink) !important; }
+  #site-header.page-header-scrolled #mobile-menu-btn{ color:var(--paper-ink); }
+  #site-header.page-header-scrolled .cta-btn{ background:linear-gradient(135deg,var(--moss-deep),var(--moss));color:white; }
+  .page-content{ max-width:1200px;margin:0 auto;padding:0 2rem 6rem; }
+  main.page-content{
+    position:relative;
+    z-index:2;
+    margin-top:clamp(-48px,-5vw,-32px);
+    padding-top:clamp(3.5rem,6vw,6rem);
+    background:transparent;
+    border-radius:0;
+    box-shadow:none;
+  }
+  main.page-content::after{
+    content:'';
+    position:absolute;
+    z-index:-1;
+    top:2rem;
+    right:-5rem;
+    width:clamp(16rem,34vw,30rem);
+    aspect-ratio:1;
+    border:clamp(1rem,3vw,2.5rem) solid rgba(124,143,58,0.12);
+    border-radius:50%;
+    transform:rotate(-15deg) scaleY(0.68);
+    box-shadow:0 0 0 1.2rem rgba(174,189,95,0.08),inset 0 0 0 1px rgba(123,44,6,0.13);
+    pointer-events:none;
+  }
+  .about-ornaments{ position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden; }
+  .about-ornament{ position:absolute;display:block; }
+  .about-ornament--type{
+    top:26rem;left:50%;transform:translateX(-50%) rotate(-90deg);
+    color:rgba(76,90,30,0.055);font-family:'Bricolage Grotesque',sans-serif;
+    font-size:clamp(5rem,12vw,10rem);font-weight:800;letter-spacing:0.08em;white-space:nowrap;
+  }
+  .about-ornament--coordinates{
+    top:49rem;right:-1rem;width:10rem;padding-top:0.7rem;border-top:1px solid rgba(76,90,30,0.2);
+    color:rgba(76,90,30,0.55);font-size:0.58rem;font-weight:700;line-height:1.8;
+    letter-spacing:0.16em;text-transform:uppercase;
+  }
+  .about-ornament--cross{
+    top:73rem;left:-1.5rem;width:7rem;height:7rem;opacity:0.38;
+    background:linear-gradient(90deg,transparent calc(50% - .5px),var(--moss) 50%,transparent calc(50% + .5px)),linear-gradient(transparent calc(50% - .5px),var(--moss) 50%,transparent calc(50% + .5px));
+  }
+  .about-ornament--ring{
+    top:98rem;right:-8rem;width:20rem;aspect-ratio:1;border:1px solid rgba(124,143,58,0.18);border-radius:50%;
+    box-shadow:0 0 0 2.5rem rgba(124,143,58,0.035),0 0 0 5rem rgba(124,143,58,0.018);
+    animation:ornamentFloat 8s ease-in-out infinite;
+  }
+  .about-ornament--word{
+    bottom:15rem;left:-2rem;color:rgba(24,28,17,0.04);font-family:'Bricolage Grotesque',sans-serif;
+    font-size:clamp(6rem,15vw,13rem);font-weight:800;line-height:1;letter-spacing:-0.06em;
+  }
+  .about-ornament--grid{
+    bottom:3rem;right:-4rem;width:16rem;height:12rem;opacity:0.32;
+    background-image:linear-gradient(rgba(76,90,30,0.16) 1px,transparent 1px),linear-gradient(90deg,rgba(76,90,30,0.16) 1px,transparent 1px);
+    background-size:2rem 2rem;
+    -webkit-mask-image:linear-gradient(135deg,transparent,#000 40%,transparent);mask-image:linear-gradient(135deg,transparent,#000 40%,transparent);
+  }
+  .about-ornament--line-a,.about-ornament--line-b{ width:1px;background:linear-gradient(transparent,rgba(124,143,58,0.34),transparent); }
+  .about-ornament--line-a{ top:8rem;left:8%;height:19rem; }
+  .about-ornament--line-b{ top:58rem;right:12%;height:24rem; }
+  .about-ornament--number{ color:rgba(76,90,30,0.42);font-size:0.62rem;font-weight:700;letter-spacing:0.2em;writing-mode:vertical-rl; }
+  .about-ornament--number-a{ top:13rem;left:3%; }
+  .about-ornament--number-b{ top:84rem;right:3%; }
+  .about-ornament--bracket{ width:4rem;height:4rem;border-top:1px solid rgba(124,143,58,0.35);border-left:1px solid rgba(124,143,58,0.35); }
+  .about-ornament--bracket-a{ top:39rem;left:5%; }
+  .about-ornament--bracket-b{ top:128rem;right:5%;transform:rotate(180deg); }
+  .about-ornament--microgrid{ width:9rem;height:6rem;opacity:0.22;background-image:linear-gradient(rgba(76,90,30,0.2) 1px,transparent 1px),linear-gradient(90deg,rgba(76,90,30,0.2) 1px,transparent 1px);background-size:1.5rem 1.5rem; }
+  .about-ornament--microgrid-a{ top:23rem;right:4%;transform:rotate(-10deg); }
+  .about-ornament--microgrid-b{ top:112rem;left:2%;transform:rotate(8deg); }
+  .about-ornament--caption{ color:rgba(24,28,17,0.34);font-size:0.55rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;white-space:nowrap; }
+  .about-ornament--caption-a{ top:68rem;left:4%;transform:rotate(-90deg);transform-origin:left top; }
+  .about-ornament--caption-b{ top:145rem;right:4%;transform:rotate(90deg);transform-origin:right top; }
+  @keyframes ornamentFloat{ 0%,100%{ transform:translate3d(0,0,0) rotate(0deg); } 50%{ transform:translate3d(-1rem,1.25rem,0) rotate(5deg); } }
+  main.page-content > div:first-child{
+    margin-bottom:clamp(4rem,8vw,7rem) !important;
+  }
+  main.page-content > div:first-child > div:first-child{
+    padding-right:clamp(0rem,3vw,3rem);
+  }
+  main.page-content > div:first-child > div:last-child{
+    position:relative;
+    box-shadow:0 22px 42px rgba(24,28,17,0.14) !important;
+  }
+  main.page-content > div:first-child > div:last-child::after{
+    content:'';
+    position:absolute;
+    right:-1.4rem;
+    bottom:-1.2rem;
+    width:6rem;
+    height:6rem;
+    border:1px solid rgba(174,189,95,0.5);
+    border-radius:50%;
+    box-shadow:0 0 0 0.7rem rgba(174,189,95,0.1);
+    pointer-events:none;
+  }
+  main.page-content::before{
+    content:'';
+    position:absolute;
+    z-index:-1;
+    top:0;
+    bottom:0;
+    left:50%;
+    width:100vw;
+    transform:translateX(-50%);
+    background:var(--paper);
+    border-top-left-radius:clamp(32px,4vw,48px);
+    border-top-right-radius:clamp(32px,4vw,48px);
+    border-bottom-left-radius:clamp(32px,4vw,48px);
+    border-bottom-right-radius:clamp(32px,4vw,48px);
+    box-shadow:0 -30px 70px rgba(10,13,8,0.28);
+    pointer-events:none;
+  }
+  .section-title{ font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;color:var(--paper-ink);margin-bottom:1.5rem; }
+  .section-subtitle{ font-size:1.125rem;color:var(--silver-3);max-width:600px;line-height:1.7;margin-bottom:3rem; }
+  .stat-number{
+    display:block;
+    font-weight:800;
+    font-size:clamp(1.15rem,2.2vw,1.6rem);
+    color:var(--paper-ink);
+  }
+  .stat-label{
+    display:block;
+    margin-top:0.3rem;
+    font-size:0.62rem;
+    font-weight:600;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:#8f8f84;
+  }
+  .story-section{
+    position:relative;perspective:1400px;
+    display:grid;
+    grid-template-columns:minmax(220px,0.72fr) minmax(0,1.28fr);
+    gap:clamp(2.5rem,7vw,7rem);
+    align-items:start;
+    margin-bottom:clamp(5rem,10vw,8rem);
+  }
+  .story-intro{ position:sticky;top:7rem;padding-top:0.25rem; }
+  .section-kicker{
+    display:flex;align-items:center;gap:0.8rem;margin-bottom:1.25rem;
+    color:var(--moss-deep);font-size:0.72rem;font-weight:700;
+    letter-spacing:0.22em;text-transform:uppercase;
+  }
+  .section-kicker::before{ content:'';width:2.5rem;height:1px;background:var(--moss); }
+  .story-title{
+    max-width:8ch;margin:0;font-size:clamp(3.1rem,7vw,6.5rem);
+    font-weight:800;line-height:0.88;letter-spacing:-0.065em;color:var(--paper-ink);
+  }
+  .story-title span{ display:block;color:var(--moss);font-style:italic;font-weight:500; }
+  .story-index{
+    display:flex;align-items:center;gap:0.75rem;margin-top:2rem;
+    color:#929487;font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  }
+  .story-index::after{ content:'';width:4rem;height:1px;background:rgba(24,28,17,0.2); }
+  .story-panel{
+    --story-x:72%;--story-y:18%;position:relative;overflow:hidden;padding:clamp(2.2rem,5vw,4.5rem);
+    border-radius:clamp(24px,4vw,42px);color:var(--silver-1);
+    background:linear-gradient(145deg,#11170d 0%,#202b14 58%,#4c5a1e 145%);
+    box-shadow:0 30px 70px rgba(10,13,8,0.2);transform-style:preserve-3d;
+    transition:transform 0.2s ease-out,box-shadow 0.5s ease;
+  }
+  .story-panel::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at var(--story-x) var(--story-y),rgba(174,189,95,0.25),transparent 34%);
+    opacity:0;transition:opacity 0.35s ease;
+  }
+  .story-panel::after{
+    content:'';position:absolute;top:-6rem;right:-5rem;width:17rem;height:17rem;
+    border:1px solid rgba(174,189,95,0.3);border-radius:50%;
+    box-shadow:0 0 0 2rem rgba(174,189,95,0.04),0 0 0 4rem rgba(174,189,95,0.025);
+  }
+  .story-panel:hover::before{ opacity:1; }
+  .story-panel:hover{ box-shadow:0 38px 85px rgba(10,13,8,0.3); }
+  .story-watermark{
+    position:absolute;z-index:0;right:-0.04em;bottom:-0.22em;pointer-events:none;
+    color:rgba(255,255,255,0.045);font-family:'Bricolage Grotesque',sans-serif;
+    font-size:clamp(7rem,18vw,15rem);font-weight:800;line-height:1;letter-spacing:-0.08em;
+    transition:transform 0.8s cubic-bezier(.2,.8,.2,1),color 0.5s ease;
+  }
+  .story-panel:hover .story-watermark{ transform:translate(-0.08em,-0.04em);color:rgba(255,255,255,0.065); }
+  .story-copy{ position:relative;z-index:2;transform:translateZ(26px); }
+  .story-meta{ display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:clamp(2.5rem,5vw,4.5rem); }
+  .story-meta-label{ color:var(--moss-light);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase; }
+  .story-orbit{ position:relative;display:grid;place-items:center;width:3.25rem;height:3.25rem;border:1px solid rgba(174,189,95,0.35);border-radius:50%;color:white; }
+  .story-orbit::after{ content:'';position:absolute;width:0.45rem;height:0.45rem;border-radius:50%;background:var(--moss-light);animation:storyOrbit 5s linear infinite; }
+  @keyframes storyOrbit{ from{ transform:rotate(0deg) translateX(1.62rem) rotate(0deg); } to{ transform:rotate(360deg) translateX(1.62rem) rotate(-360deg); } }
+  .story-lead{
+    max-width:23ch;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.65rem,3.4vw,3.1rem);
+    line-height:1.12;letter-spacing:-0.04em;color:#fff;
+  }
+  .story-lead strong{ color:var(--moss-light);font-weight:600; }
+  .story-body{ display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem); }
+  .story-body p{ margin:0;color:rgba(255,255,255,0.9);font-size:0.94rem;line-height:1.8; }
+  .story-rule{ width:100%;height:1px;margin:clamp(2rem,4vw,3rem) 0;background:rgba(255,255,255,0.15); }
+  .story-pill-row{ display:flex;flex-wrap:wrap;gap:0.65rem;margin-top:clamp(2rem,4vw,3rem); }
+  .story-pill{ padding:0.7rem 1rem;border:1px solid rgba(174,189,95,0.28);border-radius:999px;background:rgba(255,255,255,0.055);color:#fff;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease; }
+  .story-pill:hover{ background:var(--moss-light);color:var(--ink);transform:translateY(-3px); }
+  .purpose-section{
+    position:relative;isolation:isolate;margin-bottom:clamp(5rem,10vw,8rem);
+    padding:clamp(1rem,3vw,2rem) 0;
+  }
+  .purpose-section::before{
+    content:'';position:absolute;z-index:-1;left:50%;top:0;width:100vw;height:100%;
+    transform:translateX(-50%);background:linear-gradient(180deg,transparent,rgba(174,189,95,0.07),transparent);
+  }
+  .purpose-heading{ display:grid;grid-template-columns:0.7fr 1.3fr;gap:2rem;align-items:end;margin-bottom:clamp(2rem,5vw,4rem); }
+  .purpose-heading h2{ margin:0;font-size:clamp(3rem,7vw,6rem);font-weight:800;line-height:0.9;letter-spacing:-0.06em; }
+  .purpose-heading h2 span{ color:var(--moss);font-style:italic;font-weight:500; }
+  .purpose-heading-copy{ max-width:30rem;justify-self:end;color:var(--silver-3);font-size:0.95rem;line-height:1.75; }
+  .purpose-grid{ display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem);perspective:1200px; }
+  .purpose-card{
+    --card-x:50%;--card-y:50%;position:relative;min-height:clamp(28rem,45vw,36rem);overflow:hidden;
+    border-radius:clamp(24px,3vw,36px);padding:clamp(2rem,4vw,3.5rem);
+    display:flex;flex-direction:column;transform-style:preserve-3d;
+    transition:transform 0.18s ease-out,box-shadow 0.4s ease,border-color 0.4s ease;
+  }
+  .purpose-card--vision{ border:1px solid rgba(24,28,17,0.12);background:rgba(255,255,255,0.78);box-shadow:0 20px 55px rgba(24,28,17,0.08); }
+  .purpose-card--mission{ color:var(--paper-ink);border:1px solid rgba(124,143,58,0.28);background:linear-gradient(145deg,#f7f7f2 0%,#eef1df 68%,#dfe6b9 145%);box-shadow:0 24px 60px rgba(76,90,30,0.14); }
+  .purpose-card::before{
+    content:'';position:absolute;inset:0;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at var(--card-x) var(--card-y),rgba(174,189,95,0.2),transparent 38%);
+    transition:opacity 0.35s ease;
+  }
+  .purpose-card::after{
+    content:'';position:absolute;right:-7rem;top:-7rem;width:18rem;height:18rem;border-radius:50%;
+    border:1px solid rgba(124,143,58,0.25);box-shadow:0 0 0 2rem rgba(124,143,58,0.05),0 0 0 4rem rgba(124,143,58,0.025);
+    transition:transform 0.7s cubic-bezier(.2,.8,.2,1);
+  }
+  .purpose-card--mission::after{ border-color:rgba(76,90,30,0.22);box-shadow:0 0 0 2rem rgba(124,143,58,0.07),0 0 0 4rem rgba(124,143,58,0.035); }
+  .purpose-card:hover::before{ opacity:1; }
+  .purpose-card:hover::after{ transform:translate(-1.2rem,1.2rem) scale(1.08); }
+  .purpose-top{ position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center; }
+  .purpose-label{ font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--moss-deep); }
+  .purpose-card--mission .purpose-label{ color:var(--moss-deep); }
+  .purpose-symbol{ display:grid;place-items:center;width:3rem;height:3rem;border:1px solid rgba(124,143,58,0.25);border-radius:50%;color:var(--moss);font-size:1.1rem; }
+  .purpose-card--mission .purpose-symbol{ border-color:rgba(76,90,30,0.25);color:var(--moss-deep);background:rgba(255,255,255,0.45); }
+  .purpose-content{ position:relative;z-index:1;margin-top:auto;transform:translateZ(24px); }
+  .purpose-card h3{ margin:0 0 1.5rem;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;line-height:0.9;letter-spacing:-0.06em; }
+  .purpose-card--vision h3{ color:var(--paper-ink); }
+  .purpose-card--mission h3{ color:var(--paper-ink); }
+  .purpose-line{ width:3.5rem;height:3px;margin-bottom:1.5rem;background:var(--moss);transition:width 0.5s ease; }
+  .purpose-card--mission .purpose-line{ background:var(--moss-deep); }
+  .purpose-card:hover .purpose-line{ width:7rem; }
+  .purpose-text{ margin:0;color:#5f6257;font-size:clamp(0.95rem,1.3vw,1.08rem);line-height:1.8; }
+  .purpose-card--mission .purpose-text{ color:#555b49; }
+  .reveal-on-scroll{ opacity:0;transform:translateY(34px);transition:opacity 0.8s cubic-bezier(.2,.8,.2,1),transform 0.8s cubic-bezier(.2,.8,.2,1); }
+  .reveal-on-scroll.is-visible{ opacity:1;transform:translateY(0); }
+  .reveal-delay-1{ transition-delay:0.12s; }
+  .reveal-delay-2{ transition-delay:0.22s; }
+  .values-section{ position:relative;margin-bottom:clamp(4rem,8vw,7rem); }
+  .values-heading{
+    display:flex;justify-content:space-between;align-items:end;gap:2rem;
+    margin-bottom:clamp(2rem,5vw,4rem);
+  }
+  .values-heading h2{ max-width:8ch;margin:0;font-size:clamp(2.8rem,6vw,5.2rem);font-weight:800;line-height:0.92;letter-spacing:-0.055em; }
+  .values-heading p{ max-width:28rem;margin:0;color:var(--silver-3);font-size:0.95rem;line-height:1.7; }
+  .values-grid{ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem; }
+  .value-card{
+    position:relative;min-height:21rem;overflow:hidden;padding:clamp(1.6rem,3vw,2.5rem);
+    border:1px solid rgba(24,28,17,0.1);border-radius:24px;background:rgba(255,255,255,0.7);
+    display:flex;flex-direction:column;transition:transform 0.35s ease,border-color 0.35s ease,box-shadow 0.35s ease;
+  }
+  .value-card:nth-child(2),.value-card:nth-child(3){ background:#151b10;color:#fff; }
+  .value-number{ font-family:'Bricolage Grotesque',sans-serif;color:var(--moss);font-size:0.75rem;font-weight:700;letter-spacing:0.18em; }
+  .value-card:nth-child(2) .value-number,.value-card:nth-child(3) .value-number{ color:var(--moss-light); }
+  .value-card h3{ margin:auto 0 0;font-size:clamp(2rem,4vw,3.5rem);font-weight:800;line-height:0.95;letter-spacing:-0.045em; }
+  .value-tagline{ margin:1rem 0 0.8rem;color:var(--moss-deep);font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase; }
+  .value-card:nth-child(2) .value-tagline,.value-card:nth-child(3) .value-tagline{ color:var(--moss-light); }
+  .value-description{ max-width:31rem;margin:0;color:#66685f;font-size:0.9rem;line-height:1.75; }
+  .value-card:nth-child(2) h3,.value-card:nth-child(3) h3{ color:#fff; }
+  .value-card:nth-child(2) .value-description,.value-card:nth-child(3) .value-description{ color:rgba(255,255,255,0.88); }
+  .value-card::after{
+    content:'';position:absolute;top:1.5rem;right:1.5rem;width:0.7rem;height:0.7rem;
+    border-radius:50%;background:var(--moss-light);box-shadow:0 0 0 0.45rem rgba(174,189,95,0.1);
+  }
+  @media (hover:hover){
+    .value-card:hover{ transform:translateY(-8px);border-color:rgba(124,143,58,0.4);box-shadow:0 22px 45px rgba(24,28,17,0.12); }
+  }
+  main.page-content > div[style*="grid-template-columns"] > article,
+  main.page-content > div[style*="grid-template-columns"] > div,
+  #cimol-content a{
+    cursor:pointer;
+    transform-origin:center;
+    transition:transform 0.3s ease,box-shadow 0.3s ease;
+    will-change:transform;
+  }
+  @media (hover:hover){
+    main.page-content > div[style*="grid-template-columns"] > article:hover,
+    main.page-content > div[style*="grid-template-columns"] > div:hover,
+    #cimol-content a:hover{
+      transform:translateY(-8px) scale(1.025);
+      box-shadow:0 16px 34px rgba(24,28,17,0.14) !important;
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    main.page-content > div[style*="grid-template-columns"] > article,
+    main.page-content > div[style*="grid-template-columns"] > div,
+    #cimol-content a{ transition:none; }
+  }
+  
+  @media(max-width:767px){
+    .page-hero{ height:72vh;min-height:560px;max-height:700px;padding-top:100px;padding-bottom:3rem; }
+    .page-hero::before{ background-size:min(92vw,460px);background-position:center 44%;opacity:1; }
+    .page-hero > .page-content{ padding:0 1.25rem; }
+    #site-header nav.mobile-nav-open .nav-link{ color:rgba(250,249,244,0.92) !important; }
+    html,body{ width:100%;max-width:100%; }
+    .page-hero,.page-content,.page-hero > .page-content{ width:100% !important;max-width:100vw !important;min-width:0;overflow-x:hidden; }
+    .page-content{ padding:0 1.25rem 4rem; }
+    main.page-content > div:first-child{ margin-bottom:4rem !important; }
+    main.page-content > div:first-child > div:first-child{ padding-right:0; }
+    main.page-content > div:first-child > div:last-child::after{ right:-0.5rem;bottom:-0.7rem;width:4rem;height:4rem; }
+    .section-title,.section-subtitle{ width:100%;max-width:100%;overflow-wrap:anywhere; }
+    #site-header{ padding:0.75rem 1rem; }
+    .arca-header-logo{ width:28px;height:28px; }
+    #mobile-menu-btn{ display:flex !important;color:var(--paper-ink); }
+    body{ overflow-x:hidden; }
+    .story-section{ grid-template-columns:1fr;gap:2rem; }
+    .story-intro{ position:relative;top:auto; }
+    .story-title{ max-width:none; }
+    .story-panel{ border-radius:24px; }
+    .story-body{ grid-template-columns:1fr;gap:1rem; }
+    .story-meta{ margin-bottom:2.5rem; }
+    .purpose-heading{ grid-template-columns:1fr; }
+    .purpose-heading-copy{ justify-self:start; }
+    .purpose-grid{ grid-template-columns:1fr; }
+    .purpose-card{ min-height:30rem; }
+    .values-heading{ display:block; }
+    .values-heading p{ margin-top:1.25rem; }
+    .values-grid{ grid-template-columns:1fr; }
+    .value-card{ min-height:19rem; }
+    .about-ornament--type{ top:31rem;left:auto;right:-4rem;transform:rotate(-90deg);font-size:5rem; }
+    .about-ornament--coordinates,.about-ornament--cross{ display:none; }
+    .about-ornament--line-a,.about-ornament--line-b,.about-ornament--number,.about-ornament--bracket,.about-ornament--caption{ display:none; }
+    .about-ornament--microgrid{ opacity:0.14; }
+    .about-ornament--microgrid-a{ top:39rem;right:-3rem; }
+    .about-ornament--microgrid-b{ top:133rem;left:-3rem; }
+    .about-ornament--ring{ top:115rem;right:-11rem;width:17rem; }
+    .about-ornament--word{ bottom:26rem;left:-1rem;font-size:6rem; }
+    .about-ornament--grid{ right:-7rem;bottom:6rem; }
+    .page-content > div[style*="grid-template-columns"]{
+      grid-template-columns:minmax(0,1fr) !important;
+      gap:2rem !important;
+    }
+    #site-header nav.mobile-nav-open{
+      display:flex !important;
+      position:fixed;
+      top:4.25rem;
+      left:1rem;
+      right:1rem;
+      z-index:60;
+      flex-direction:column;
+      align-items:stretch;
+      gap:0.25rem;
+      padding:1rem;
+      background:rgba(250,249,244,0.98);
+      border-radius:1rem;
+      box-shadow:0 12px 30px rgba(0,0,0,0.14);
+    }
+    #site-header nav.mobile-nav-open .nav-link{ padding:0.75rem 1rem; }
+    #site-header nav.mobile-nav-open .w-px{ display:none; }
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .page-hero::before{ animation:none; }
+    .reveal-on-scroll{ opacity:1;transform:none;transition:none; }
+    .purpose-card,.purpose-card::after,.purpose-line,.story-panel,.story-watermark,.story-pill{ transition:none; }
+    .story-orbit::after{ animation:none;transform:translateX(1.62rem); }
+    .about-ornament--ring{ animation:none; }
+  }
+</style>
+</head>
+<body class="arca-inner-page">
+  <!-- Header -->
+  <header id="site-header" class="flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <img src="images/trans_logo.png" alt="ARCA" class="arca-header-logo" />
+      <span class="font-display font-extrabold text-xl tracking-tight" style="color:var(--paper-ink)">arca</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-xs font-semibold">
+      <a href="index.html" class="nav-link">HOME</a>
+      <a href="about.html" class="nav-link">ABOUT</a>
+      <a href="services.html" class="nav-link">OUR SERVICE</a>
+      <span class="w-px h-5 mx-2" style="background:var(--silver-2)"></span>
+      <a href="case-studies.html" class="nav-link">CASE STUDIES</a>
+    </nav>
+    <a href="https://wa.me/62895334842374" class="cta-btn hidden md:inline-block">CONTACT US</a>
+    <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </header>
+
+  
+  <!-- Hero -->
+  <section class="page-hero">
+    <img src="images/trans_logo.png" alt="" class="page-hero-logo" aria-hidden="true" />
+    <div class="page-content" style="text-align:center;">
+      <p style="color:var(--moss);font-weight:700;font-size:0.875rem;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:1rem;">Who We Are</p>
+      <h1 class="section-title font-display">We Create Ideas<br/>People Remember</h1>
+      <p class="section-subtitle" style="margin:0 auto;">ARCA is an independent creative agency that transforms business challenges into memorable experiences.</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="page-content">
+    <div class="about-ornaments" aria-hidden="true">
+      <span class="about-ornament about-ornament--type">REMEMBER</span>
+      <span class="about-ornament about-ornament--coordinates">06.9175 S<br>107.6191 E<br>Bandung / ID</span>
+      <span class="about-ornament about-ornament--cross"></span>
+      <span class="about-ornament about-ornament--ring"></span>
+      <span class="about-ornament about-ornament--word">IMPACT</span>
+      <span class="about-ornament about-ornament--grid"></span>
+      <span class="about-ornament about-ornament--line-a"></span>
+      <span class="about-ornament about-ornament--line-b"></span>
+      <span class="about-ornament about-ornament--number about-ornament--number-a">ARC / 01</span>
+      <span class="about-ornament about-ornament--number about-ornament--number-b">ARC / 04</span>
+      <span class="about-ornament about-ornament--bracket about-ornament--bracket-a"></span>
+      <span class="about-ornament about-ornament--bracket about-ornament--bracket-b"></span>
+      <span class="about-ornament about-ornament--microgrid about-ornament--microgrid-a"></span>
+      <span class="about-ornament about-ornament--microgrid about-ornament--microgrid-b"></span>
+      <span class="about-ornament about-ornament--caption about-ornament--caption-a">Ideas / Culture / Impact</span>
+      <span class="about-ornament about-ornament--caption about-ornament--caption-b">Relevant today / Remembered tomorrow</span>
+    </div>
+    <section class="story-section" aria-labelledby="story-title">
+      <div class="story-intro">
+        <p class="section-kicker">Inside ARCA</p>
+        <h2 id="story-title" class="story-title font-display">Our <span>Story.</span></h2>
+        <p class="story-index">Since day one</p>
+      </div>
+      <div class="story-panel reveal-on-scroll">
+        <span class="story-watermark" aria-hidden="true">ARCA</span>
+        <div class="story-copy">
+          <div class="story-meta">
+            <span class="story-meta-label">Independent creative agency</span>
+            <span class="story-orbit" aria-hidden="true">&#10022;</span>
+          </div>
+          <p class="story-lead">We transform business challenges into <strong>ideas people remember.</strong></p>
+          <div class="story-rule"></div>
+          <div class="story-body">
+            <p>ARCA is an independent creative agency that transforms business challenges into ideas people remember. We combine strategic thinking, creative excellence, and flawless execution to build campaigns that strengthen brands, influence culture, and deliver measurable business impact.</p>
+            <p>Every project is approached with the same ambition to create work that is relevant today and remembered tomorrow.</p>
+          </div>
+          <div class="story-pill-row" aria-label="Our creative approach">
+            <span class="story-pill">Strategy</span>
+            <span class="story-pill">Creativity</span>
+            <span class="story-pill">Execution</span>
+            <span class="story-pill">Impact</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="purpose-section" aria-labelledby="purpose-title">
+      <div class="purpose-heading reveal-on-scroll">
+        <div>
+          <p class="section-kicker">Our direction</p>
+          <h2 id="purpose-title" class="font-display">Vision <span>&amp;</span><br>Mission</h2>
+        </div>
+        <p class="purpose-heading-copy">The belief that guides where we are going—and the commitment that shapes every piece of work we create along the way.</p>
+      </div>
+      <div class="purpose-grid">
+        <article class="purpose-card purpose-card--vision reveal-on-scroll reveal-delay-1">
+          <div class="purpose-top">
+            <span class="purpose-label">What we see</span>
+            <span class="purpose-symbol" aria-hidden="true">&#9678;</span>
+          </div>
+          <div class="purpose-content">
+            <h3 class="font-display">Vision</h3>
+            <div class="purpose-line"></div>
+            <p class="purpose-text">At ARCA, we believe great brands are not remembered by how often they appear, but by how deeply they resonate. Our vision is to create ideas that become benchmarks, shape culture, and leave a legacy that inspires industries to think beyond the ordinary.</p>
+          </div>
+        </article>
+        <article class="purpose-card purpose-card--mission reveal-on-scroll reveal-delay-2">
+          <div class="purpose-top">
+            <span class="purpose-label">How we move</span>
+            <span class="purpose-symbol" aria-hidden="true">&#8599;</span>
+          </div>
+          <div class="purpose-content">
+            <h3 class="font-display">Mission</h3>
+            <div class="purpose-line"></div>
+            <p class="purpose-text">ARCA exists to transform ambitious ideas into work that people remember, businesses value, and industries aspire to follow. We combine strategy, creativity, and authentic storytelling to create campaigns that earn trust, influence culture, and become the new standard for meaningful growth.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="values-section" aria-labelledby="values-title">
+      <div class="values-heading">
+        <div>
+          <p class="section-kicker">What drives us</p>
+          <h2 id="values-title" class="font-display">Core Values</h2>
+        </div>
+        <p>Four principles shape how we think, collaborate, and turn every opportunity into meaningful impact.</p>
+      </div>
+      <div class="values-grid">
+        <article class="value-card">
+          <span class="value-number">01 / A</span>
+          <h3 class="font-display">Ambition</h3>
+          <p class="value-tagline">Think Bigger Than the Brief.</p>
+          <p class="value-description">We go beyond the client's request by seeking bigger opportunities, smarter strategies, and bolder ideas. Every project is an opportunity to create greater value and deliver impact beyond expectations.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-number">02 / R</span>
+          <h3 class="font-display">Resonance</h3>
+          <p class="value-tagline">Create Work People Genuinely Remember.</p>
+          <p class="value-description">We believe the most meaningful work is not measured by attention alone, but by its ability to leave a lasting impression, build emotional connections, and stay relevant long after the campaign ends.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-number">03 / C</span>
+          <h3 class="font-display">Courage</h3>
+          <p class="value-tagline">Challenge the Ordinary.</p>
+          <p class="value-description">We embrace bold thinking and challenge conventional approaches. By pushing creative boundaries, we create work that stands out, inspires change, and sets new standards.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-number">04 / A</span>
+          <h3 class="font-display">Accountability</h3>
+          <p class="value-tagline">Own Every Outcome.</p>
+          <p class="value-description">We take full ownership of every project—from the first idea to the final result. We are committed to delivering excellence, building trust, and creating measurable value for every client.</p>
+        </article>
+      </div>
+    </section>
+
+</main>
+
+  <script>
+    (function(){
+      const header = document.getElementById('site-header');
+      if(header){
+        const updateHeader = function(){
+          const hero = document.querySelector('.page-hero');
+          const threshold = hero ? hero.offsetTop + hero.offsetHeight - header.offsetHeight : 60;
+          header.classList.toggle('page-header-scrolled', window.scrollY > threshold);
+        };
+        updateHeader();
+        window.addEventListener('scroll', updateHeader, {passive:true});
+      }
+
+      const menuButton = document.getElementById('mobile-menu-btn');
+      const nav = document.querySelector('#site-header nav');
+      if(!menuButton || !nav) return;
+
+      menuButton.setAttribute('aria-expanded','false');
+      menuButton.addEventListener('click', function(){
+        const isOpen = nav.classList.toggle('mobile-nav-open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+      });
+      nav.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
+          nav.classList.remove('mobile-nav-open');
+          menuButton.setAttribute('aria-expanded','false');
+        });
+      });
+      document.addEventListener('keydown', function(event){
+        if(event.key === 'Escape'){
+          nav.classList.remove('mobile-nav-open');
+          menuButton.setAttribute('aria-expanded','false');
+        }
+      });
+    })();
+
+    function initScrollCountUp(){
+      const counters = document.querySelectorAll('.stat-number');
+      if(!counters.length || !('IntersectionObserver' in window)) return;
+
+      counters.forEach(function(counter){
+        if(!counter.dataset.original){
+          counter.dataset.original = counter.textContent.trim();
+        }
+        counter.textContent = '0';
+        counter.dataset.visible = 'false';
+      });
+
+      const observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          const counter = entry.target;
+
+          if(entry.isIntersecting){
+            if(counter.dataset.visible === 'true') return;
+            counter.dataset.visible = 'true';
+            startCountUpAnimation(counter);
+            return;
+          }
+
+          counter.dataset.visible = 'false';
+          if(counter._countAnimationFrame){
+            cancelAnimationFrame(counter._countAnimationFrame);
+            counter._countAnimationFrame = null;
+          }
+          counter.textContent = '0';
+        });
+      }, { root:null, rootMargin:'0px 0px -100px 0px', threshold:0.3 });
+
+      counters.forEach(function(counter){ observer.observe(counter); });
+    }
+
+    function startCountUpAnimation(counter){
+      const finalText = counter.dataset.original;
+      const match = finalText.match(/^([\d.]+)([M+K%]*)$/);
+      if(!match){
+        counter.textContent = finalText;
+        return;
+      }
+
+      const finalNum = parseFloat(match[1]);
+      const suffix = match[2] || '';
+      const decimals = (finalText.match(/\.(\d+)/) || [,''])[1].length;
+      const duration = 750;
+      const startTime = performance.now();
+
+      if(counter._countAnimationFrame){
+        cancelAnimationFrame(counter._countAnimationFrame);
+      }
+
+      function updateCounter(currentTime){
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentNum = finalNum * easeOut;
+        counter.textContent = (decimals ? currentNum.toFixed(decimals) : Math.round(currentNum)) + suffix;
+
+        if(progress < 1 && counter.dataset.visible === 'true'){
+          counter._countAnimationFrame = requestAnimationFrame(updateCounter);
+        }else if(progress >= 1 && counter.dataset.visible === 'true'){
+          counter.textContent = finalText;
+          counter._countAnimationFrame = null;
+        }
+      }
+
+      counter._countAnimationFrame = requestAnimationFrame(updateCounter);
+    }
+
+    initScrollCountUp();
+
+    (function initAboutInteractions(){
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealItems = document.querySelectorAll('.reveal-on-scroll');
+
+      if(reducedMotion || !('IntersectionObserver' in window)){
+        revealItems.forEach(function(item){ item.classList.add('is-visible'); });
+      }else{
+        const revealObserver = new IntersectionObserver(function(entries, observer){
+          entries.forEach(function(entry){
+            if(!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, {threshold:0.15,rootMargin:'0px 0px -60px 0px'});
+        revealItems.forEach(function(item){ revealObserver.observe(item); });
+      }
+
+      if(reducedMotion || !window.matchMedia('(hover:hover)').matches) return;
+      document.querySelectorAll('.purpose-card').forEach(function(card){
+        card.addEventListener('pointermove', function(event){
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+          card.style.setProperty('--card-x', (x * 100) + '%');
+          card.style.setProperty('--card-y', (y * 100) + '%');
+          card.style.transform = 'rotateX(' + ((0.5 - y) * 3) + 'deg) rotateY(' + ((x - 0.5) * 3) + 'deg) translateY(-6px)';
+        });
+        card.addEventListener('pointerleave', function(){ card.style.transform = ''; });
+      });
+
+      const storyPanel = document.querySelector('.story-panel');
+      if(storyPanel){
+        storyPanel.addEventListener('pointermove', function(event){
+          const rect = storyPanel.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+          storyPanel.style.setProperty('--story-x', (x * 100) + '%');
+          storyPanel.style.setProperty('--story-y', (y * 100) + '%');
+          storyPanel.style.transform = 'rotateX(' + ((0.5 - y) * 2.2) + 'deg) rotateY(' + ((x - 0.5) * 2.2) + 'deg) translateY(-5px)';
+        });
+        storyPanel.addEventListener('pointerleave', function(){ storyPanel.style.transform = ''; });
+      }
+    })();
+  </script>
+
+
+  <!-- Footer -->
+  <footer style="background:var(--ink);color:var(--silver-2);padding:4rem 2rem 2rem;">
+    <div style="max-width:1200px;margin:auto;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-bottom:3rem;">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img src="images/trans_logo.png" alt="ARCA" style="width:32px;height:32px;filter:brightness(0)invert(1);" />
+            <span class="font-display font-bold text-xl text-white">arca</span>
+          </div>
+          <p style="font-size:0.875rem;line-height:1.7;">Independent creative agency transforming business challenges into ideas people remember.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">PAGES</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+            <li><a href="index.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Home</a></li>
+            <li><a href="about.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">About</a></li>
+            <li><a href="services.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">MORE</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+            <li><a href="case-studies.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Case Studies</a></li>
+            <li><a href="articles.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Articles</a></li>
+            <li><a href="contact.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">CONTACT</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+            <li><a href="mailto:office@aroundarca.id" style="color:inherit;text-decoration:none;">office@aroundarca.id</a></li>
+            <li><a href="tel:+62895334842374" style="color:inherit;text-decoration:none;">+62 895 3348 42374</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Jl+Biologi+No+19+Bandung" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Jl Biologi No. 19, Bandung ↗</a></li>
+            <li><a href="https://instagram.com/aroundarca" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Instagram ↗</a></li>
+            <li><a href="https://id.linkedin.com/company/arca-creative-agency" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">LinkedIn ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;text-align:center;font-size:0.8rem;">
+        © 2024 ARCA Creative Agency. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

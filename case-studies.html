@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Studies — ARCA Creative Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/footer.css">
+<style>
+  :root{
+    --ink: #0a0d08; --ink-2: #121a0d; --moss-deep: #4c5a1e; --moss: #7c8f3a;
+    --moss-light: #aebd5f; --silver-1: #f7f7f2; --silver-2: #a9a9a1; --silver-3: #55554e;
+    --paper: #faf9f4; --paper-ink: #181c11;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Inter','Segoe UI',sans-serif; background:var(--paper); background-image:radial-gradient(rgba(24,28,17,0.035) 0.6px,transparent 0.6px);background-size:140px 140px;color:var(--paper-ink);overflow-x:hidden; }
+  .font-display{ font-family:'Bricolage Grotesque','Inter',sans-serif; }
+  
+  /* ── SMART HEADER ── */
+  #site-header{ position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(250,249,244,0.98);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 2px 20px rgba(0,0,0,0.08);transition:all 0.3s ease;padding:0.75rem 1.5rem;}
+  #site-header:hover{ box-shadow:0 4px 30px rgba(0,0,0,0.12); }
+  .arca-header-logo{ width:36px;height:36px;object-fit:contain;filter:none; }
+  .nav-link{ color:var(--paper-ink)!important;text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:0.14em;position:relative;transition:color 0.3s; }
+  .nav-link:hover{ color:var(--moss)!important; }
+  .nav-link::after{ content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--moss);transition:width 0.3s; }
+  .nav-link:hover::after{ width:100%; }
+  .cta-btn{ background:linear-gradient(135deg,var(--moss-deep),var(--moss));color:white;border-radius:9999px;padding:0.65rem 1.5rem;font-weight:600;font-size:0.8rem;letter-spacing:0.05em;text-decoration:none;display:inline-block;transition:transform 0.3s,box-shadow 0.3s; }
+  .cta-btn:hover{ transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,143,58,0.35); }
+  
+  /* Page content */
+  .page-hero{ position:relative;isolation:isolate;overflow:hidden;height:70vh;min-height:620px;max-height:760px;padding-top:120px;padding-bottom:4rem;display:flex;align-items:center;background:radial-gradient(120% 90% at 82% 8%,rgba(124,143,58,0.2),transparent 55%),radial-gradient(140% 100% at 10% 100%,rgba(76,90,30,0.35),transparent 60%),linear-gradient(160deg,var(--ink) 0%,var(--ink-2) 55%,var(--ink) 100%); }
+  .page-hero::before{ content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:url('images/trans_logo.png') center 48% / min(58vw,680px) auto no-repeat;opacity:1;filter:drop-shadow(0 24px 45px rgba(0,0,0,0.35));animation:pageLogoBreathe 5.5s ease-in-out infinite;transform-origin:50% 50%;will-change:transform; }
+  @keyframes pageLogoBreathe{ 0%,100%{ transform:scale(1) rotate(0deg); } 50%{ transform:scale(1.045) rotate(-1.8deg); } }
+  .page-hero::after{ content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(70% 80% at 50% 50%,transparent 20%,rgba(0,0,0,0.28) 100%); }
+  .page-hero > .page-content{ position:relative;z-index:2;width:100%;padding:0 2rem; }
+  .page-hero .section-title{ color:var(--silver-1);text-shadow:0 8px 30px rgba(0,0,0,0.38); }
+  .page-hero .section-subtitle{ color:rgba(247,247,242,0.82); }
+  .page-hero > .page-content > p:first-child{ color:var(--moss-light) !important; }
+  #site-header{ background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none; }
+  #site-header .nav-link{ color:white !important; }
+  #site-header .arca-header-logo{ filter:brightness(0) invert(1); }
+  #site-header > a > span{ color:white !important; }
+  #site-header #mobile-menu-btn{ color:white; }
+  #site-header .cta-btn{ background:linear-gradient(135deg,var(--silver-1),var(--silver-2) 55%,var(--silver-1));color:var(--ink); }
+  #site-header.page-header-scrolled{ background:rgba(250,249,244,1);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 2px 20px rgba(0,0,0,0.08); }
+  #site-header.page-header-scrolled .nav-link{ color:var(--paper-ink) !important; }
+  #site-header.page-header-scrolled .arca-header-logo{ filter:none; }
+  #site-header.page-header-scrolled > a > span{ color:var(--paper-ink) !important; }
+  #site-header.page-header-scrolled #mobile-menu-btn{ color:var(--paper-ink); }
+  #site-header.page-header-scrolled .cta-btn{ background:linear-gradient(135deg,var(--moss-deep),var(--moss));color:white; }
+  .page-content{ max-width:1200px;margin:0 auto;padding:0 2rem 6rem; }
+  main.page-content{
+    position:relative;
+    z-index:2;
+    isolation:isolate;
+    margin-top:clamp(-48px,-5vw,-32px);
+    padding-top:clamp(3.5rem,6vw,6rem);
+    background:transparent;
+    border-radius:0;
+    box-shadow:none;
+  }
+  main.page-content::before{
+    content:'';
+    position:absolute;
+    z-index:0;
+    top:0;
+    bottom:0;
+    left:50%;
+    width:100vw;
+    transform:translateX(-50%);
+    background:
+      radial-gradient(55rem 22rem at 14% 0%,rgba(174,189,95,0.16),transparent 68%),
+      radial-gradient(42rem 24rem at 94% 34%,rgba(123,44,6,0.06),transparent 70%),
+      linear-gradient(180deg,#fbfaf5 0%,#f3efe4 100%) !important;
+    border-top-left-radius:clamp(32px,4vw,48px);
+    border-top-right-radius:clamp(32px,4vw,48px);
+    border-bottom-left-radius:clamp(32px,4vw,48px);
+    border-bottom-right-radius:clamp(32px,4vw,48px);
+    box-shadow:0 -30px 70px rgba(10,13,8,0.28);
+    pointer-events:none;
+  }
+  .scroll-road-wrap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:1;
+    overflow:visible;
+  }
+  .scroll-road-svg{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:visible;
+    pointer-events:none;
+    filter:drop-shadow(0 14px 35px rgba(76,90,30,0.18));
+  }
+  footer{
+    position:relative;
+    z-index:30;
+  }
+  .road-track-ghost{
+    fill:none;
+    stroke:rgba(124,143,58,0.10);
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    vector-effect:non-scaling-stroke;
+  }
+  .road-track-glow{
+    fill:none;
+    stroke:rgba(174,189,95,0.35);
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    filter:blur(8px);
+    vector-effect:non-scaling-stroke;
+    will-change:stroke-dashoffset;
+  }
+  .road-track-main{
+    fill:none;
+    stroke:url(#road-moss-gradient);
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    vector-effect:non-scaling-stroke;
+    will-change:stroke-dashoffset;
+  }
+  .road-track-stripe{
+    fill:none;
+    stroke:rgba(255,255,255,0.92);
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:14 12;
+    vector-effect:non-scaling-stroke;
+    will-change:stroke-dashoffset;
+  }
+  @keyframes arcaLogoSpin{
+    0%{ transform:rotate(0deg); }
+    100%{ transform:rotate(360deg); }
+  }
+  .road-logo-spin{
+    transform-origin:0px 0px;
+    animation:arcaLogoSpin 11s linear infinite;
+    will-change:transform;
+  }
+  main.page-content > :not(.scroll-road-wrap){
+    position:relative;
+    z-index:2;
+  }
+  .section-title{ font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;color:var(--paper-ink);margin-bottom:1.5rem; }
+  .section-subtitle{ font-size:1.125rem;color:var(--silver-3);max-width:600px;line-height:1.7;margin-bottom:3rem; }
+  /* ── INTERACTIVE CASE STUDY CARDS HOVER EFFECT ── */
+  main.page-content > div[style*="grid-template-columns"] > article,
+  main.page-content > div[style*="grid-template-columns"] > div,
+  #cimol-content a{
+    cursor:pointer;
+    position:relative;
+    transform-origin:center;
+    border:1.5px solid transparent;
+    transition:transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1),
+               box-shadow 0.4s cubic-bezier(0.2, 0.9, 0.3, 1),
+               border-color 0.35s ease,
+               background-color 0.35s ease;
+    will-change:transform,box-shadow;
+  }
+  main.page-content > div[style*="grid-template-columns"] > article img,
+  #cimol-content a img{
+    transition:transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  @media (hover:hover){
+    main.page-content > div[style*="grid-template-columns"] > article:hover,
+    main.page-content > div[style*="grid-template-columns"] > div:hover,
+    #cimol-content a:hover{
+      transform:translateY(-12px) scale(1.038);
+      border-color:rgba(174,189,95,0.85) !important;
+      box-shadow:
+        0 24px 50px -12px rgba(76,90,30,0.32),
+        0 0 35px 6px rgba(174,189,95,0.38),
+        0 0 14px 2px rgba(124,143,58,0.48),
+        0 0 0 1.5px rgba(174,189,95,0.75) !important;
+      z-index:15;
+    }
+    main.page-content > div[style*="grid-template-columns"] > article:hover img,
+    #cimol-content a:hover img{
+      transform:scale(1.06);
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    main.page-content > div[style*="grid-template-columns"] > article,
+    main.page-content > div[style*="grid-template-columns"] > div,
+    #cimol-content a,
+    main.page-content > div[style*="grid-template-columns"] > article img,
+    #cimol-content a img,
+    .road-logo-spin{
+      transition:none;
+      transform:none !important;
+      animation:none !important;
+    }
+  }
+
+  @media(max-width:767px){
+    #site-header{ padding:0.75rem 1rem; }
+    .arca-header-logo{ width:28px;height:28px; }
+    #mobile-menu-btn{ display:flex !important;color:var(--paper-ink); }
+    body{ overflow-x:hidden; }
+    .page-content > div[style*="grid-template-columns"]{
+      grid-template-columns:minmax(0,1fr) !important;
+      gap:2rem !important;
+    }
+    #site-header nav.mobile-nav-open{
+      display:flex !important;
+      position:fixed;
+      top:4.25rem;
+      left:1rem;
+      right:1rem;
+      z-index:60;
+      flex-direction:column;
+      align-items:stretch;
+      gap:0.25rem;
+      padding:1rem;
+      background:rgba(250,249,244,0.98);
+      border-radius:1rem;
+      box-shadow:0 12px 30px rgba(0,0,0,0.14);
+    }
+    #site-header nav.mobile-nav-open .nav-link{ padding:0.75rem 1rem; }
+    #site-header nav.mobile-nav-open .w-px{ display:none; }
+  }
+  @media(prefers-reduced-motion:reduce){ .page-hero::before{ animation:none; } }
+</style>
+</head>
+<body class="arca-inner-page">
+  <!-- Header -->
+  <header id="site-header" class="flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <img src="images/trans_logo.png" alt="ARCA" class="arca-header-logo" />
+      <span class="font-display font-extrabold text-xl tracking-tight" style="color:var(--paper-ink)">arca</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-xs font-semibold">
+      <a href="index.html" class="nav-link">HOME</a>
+      <a href="about.html" class="nav-link">ABOUT</a>
+      <a href="services.html" class="nav-link">OUR SERVICE</a>
+      <span class="w-px h-5 mx-2" style="background:var(--silver-2)"></span>
+      <a href="case-studies.html" class="nav-link is-current" aria-current="page">CASE STUDIES</a>
+    </nav>
+    <a href="https://wa.me/62895334842374" class="cta-btn hidden md:inline-block">CONTACT US</a>
+    <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </header>
+
+  
+  <section class="page-hero">
+    <img src="images/trans_logo.png" alt="" class="page-hero-logo" aria-hidden="true" />
+    <div class="page-content" style="text-align:center;">
+      <p style="color:var(--moss);font-weight:700;font-size:0.875rem;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:1rem;">Our Work</p>
+      <h1 class="section-title font-display">Success Stories<br/>That Speak</h1>
+      <p class="section-subtitle" style="margin:0 auto;">Real results from real campaigns. See how we've helped brands achieve extraordinary growth.</p>
+    </div>
+  </section>
+
+  <main class="page-content">
+    <div class="scroll-road-wrap" aria-hidden="true">
+      <svg id="scroll-road-art" class="scroll-road-svg" focusable="false">
+        <defs>
+          <linearGradient id="road-moss-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4c5a1e" />
+            <stop offset="35%" stop-color="#7c8f3a" />
+            <stop offset="70%" stop-color="#8da53f" />
+            <stop offset="100%" stop-color="#aebd5f" />
+          </linearGradient>
+          <filter id="road-moss-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="rgba(76,90,30,0.38)" />
+          </filter>
+          <filter id="arca-logo-glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(76,90,30,0.4)" />
+            <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="rgba(174,189,95,0.75)" />
+          </filter>
+        </defs>
+        <path id="road-ghost" class="road-track-ghost"></path>
+        <path id="road-glow" class="road-track-glow"></path>
+        <path id="road-main" class="road-track-main"></path>
+        <path id="road-stripe" class="road-track-stripe"></path>
+        <g id="road-arrow-group" style="opacity:0;" filter="url(#arca-logo-glow)">
+          <g class="road-logo-spin">
+            <image id="road-arca-logo" href="images/trans_logo.png" x="-28" y="-28" width="56" height="56" preserveAspectRatio="xMidYMid meet" />
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;">
+      <article style="background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 25px rgba(0,0,0,0.07);">
+        <div style="height:220px;background:linear-gradient(135deg,#f8f9fa,#e9ecef);display:flex;align-items:center;justify-content:center;font-size:3rem;"><img src="images/data-cacadbury.png" alt="Cadbury" style="max-width:70%;max-height:150px;object-fit:contain;"></div>
+        <div style="padding:2rem;">
+          <span style="color:var(--moss);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;">FMCG / FOOD & BEVERAGE</span>
+          <h3 class="font-display" style="font-size:1.35rem;font-weight:700;margin:0.5rem 0;">Cadbury Campaign</h3>
+          <p style="color:#666;line-height:1.7;font-size:0.9375rem;margin-bottom:1rem;">Delivered 35.8M total views across 50 videos — 2.3% above target.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <span style="background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.85rem;border-radius:99px;font-size:0.75rem;font-weight:600;">35.8M+ Views</span>
+            <span style="background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.85rem;border-radius:99px;font-size:0.75rem;font-weight:600;">50 Videos</span>
+          </div>
+        </div>
+      </article>
+      <article style="background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 25px rgba(0,0,0,0.07);">
+        <div style="height:220px;background:linear-gradient(135deg,#fff5e6,#ffe4cc);display:flex;align-items:center;justify-content:center;font-size:3rem;"><img src="images/data-cimolbojotaa.png" alt="Cimol Bojot AA" style="max-width:70%;max-height:150px;object-fit:contain;"></div>
+        <div style="padding:2rem;">
+          <span style="color:var(--moss);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;">FMCG / DESSERT</span>
+          <h3 class="font-display" style="font-size:1.35rem;font-weight:700;margin:0.5rem 0;">Cimol Bojot AA</h3>
+          <p style="color:#666;line-height:1.7;font-size:0.9375rem;margin-bottom:1rem;">Delivered 56.7M total views across 50 videos — 278% of target.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <span style="background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.85rem;border-radius:99px;font-size:0.75rem;font-weight:600;">56.7M+ Views</span>
+            <span style="background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.85rem;border-radius:99px;font-size:0.75rem;font-weight:600;">50 Videos</span>
+          </div>
+        </div>
+      </article>
+      <article style="background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 25px rgba(0,0,0,0.07);">
+        <div style="height:220px;background:linear-gradient(135deg,#e6f7ff,#cceeff);display:flex;align-items:center;justify-content:center;font-size:3rem;"><img src="images/data-logo-okky.png" alt="Okky Jelly Drink" style="max-width:70%;max-height:150px;object-fit:contain;"></div>
+        <div style="padding:2rem;">
+          <span style="color:var(--moss);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;">BEVERAGE</span>
+          <h3 class="font-display" style="font-size:1.35rem;font-weight:700;margin:0.5rem 0;">Okky Jelly Drink</h3>
+          <p style="color:#666;line-height:1.7;font-size:0.9375rem;margin-bottom:1rem;">Delivered 49.2M total views across 50 videos — 96.8% above target.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <span style="background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.85rem;border-radius:99px;font-size:0.75rem;font-weight:600;">49.2M+ Views</span>
+            <span style="background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.85rem;border-radius:99px;font-size:0.75rem;font-weight:600;">50 Videos</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <section id="cimol-content" style="margin-top:4rem;position:relative;">
+      <div style="text-align:center;margin-bottom:2.5rem;position:relative;z-index:1;">
+        <p style="color:var(--moss);font-weight:700;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem;">Cimol Bojot AA Campaign Content</p>
+        <h2 class="font-display" style="font-size:2rem;font-weight:800;margin-bottom:0.75rem;">Top Performing Content</h2>
+        <p style="color:#666;line-height:1.7;max-width:650px;margin:0 auto;">Konten TikTok dan Instagram Reels yang menjadi bagian dari campaign Cimol Bojot AA. Klik kartu untuk membuka video aslinya.</p>
+      </div>
+
+      <!-- Top 4 TikTok Subsection -->
+      <div style="margin-bottom:3.5rem;">
+        <h3 class="font-display" style="font-size:1.35rem;font-weight:700;margin-bottom:1.25rem;">Top 4 TikTok</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem;">
+          <a href="https://vt.tiktok.com/ZSah4rXqT/" target="_blank" rel="noopener noreferrer" style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);color:inherit;text-decoration:none;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;padding:1.25rem 1.25rem 0;font-size:0.8rem;font-weight:700;"><span>@ibuendog</span><span style="color:var(--moss);font-size:0.7rem;">Link Video ↗</span></div>
+            <div style="position:relative;aspect-ratio:3/4;margin:1rem 1.25rem 0;overflow:hidden;border-radius:14px;background:var(--ink);"><img src="images/data-1tiktok.png" alt="@ibuendog TikTok video - Dummy Cimol" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(0,0,0,0.6);color:white;border-radius:999px;padding:0.3rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">TIKTOK</span></div>
+            <div style="padding:1rem 1.25rem 1.25rem;"><strong style="display:block;color:var(--moss-deep);font-size:0.9rem;">8.8M views</strong><span style="display:block;color:#777;font-size:0.75rem;margin-top:0.35rem;">352,800 likes · 5,925 comments</span><span style="display:inline-block;margin-top:0.75rem;background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.7rem;border-radius:999px;font-size:0.65rem;font-weight:700;">Dummy Cimol</span></div>
+          </a>
+          <a href="https://vt.tiktok.com/ZSahV1ym9/" target="_blank" rel="noopener noreferrer" style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);color:inherit;text-decoration:none;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;padding:1.25rem 1.25rem 0;font-size:0.8rem;font-weight:700;"><span>@mabelle.aluna</span><span style="color:var(--moss);font-size:0.7rem;">Link Video ↗</span></div>
+            <div style="position:relative;aspect-ratio:3/4;margin:1rem 1.25rem 0;overflow:hidden;border-radius:14px;background:var(--ink);"><img src="images/data-2tiktok.png" alt="@mabelle.aluna TikTok video - School Story" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(0,0,0,0.6);color:white;border-radius:999px;padding:0.3rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">TIKTOK</span></div>
+            <div style="padding:1rem 1.25rem 1.25rem;"><strong style="display:block;color:var(--moss-deep);font-size:0.9rem;">4.1M views</strong><span style="display:block;color:#777;font-size:0.75rem;margin-top:0.35rem;">112,600 likes · 1,491 comments</span><span style="display:inline-block;margin-top:0.75rem;background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.7rem;border-radius:999px;font-size:0.65rem;font-weight:700;">School Story</span></div>
+          </a>
+          <a href="https://www.tiktok.com/@/video/7590637990305615125" target="_blank" rel="noopener noreferrer" style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);color:inherit;text-decoration:none;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;padding:1.25rem 1.25rem 0;font-size:0.8rem;font-weight:700;"><span>@mabelle.aluna</span><span style="color:var(--moss);font-size:0.7rem;">Link Video ↗</span></div>
+            <div style="position:relative;aspect-ratio:3/4;margin:1rem 1.25rem 0;overflow:hidden;border-radius:14px;background:var(--ink);"><img src="images/data-3tiktok.png" alt="@mabelle.aluna TikTok video - School Story" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(0,0,0,0.6);color:white;border-radius:999px;padding:0.3rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">TIKTOK</span></div>
+            <div style="padding:1rem 1.25rem 1.25rem;"><strong style="display:block;color:var(--moss-deep);font-size:0.9rem;">1.7M views</strong><span style="display:block;color:#777;font-size:0.75rem;margin-top:0.35rem;">127,300 likes · 1,193 comments</span><span style="display:inline-block;margin-top:0.75rem;background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.7rem;border-radius:999px;font-size:0.65rem;font-weight:700;">School Story</span></div>
+          </a>
+          <a href="https://www.tiktok.com/@/video/7594034934386330901" target="_blank" rel="noopener noreferrer" style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);color:inherit;text-decoration:none;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;padding:1.25rem 1.25rem 0;font-size:0.8rem;font-weight:700;"><span>@punkkasepnaa</span><span style="color:var(--moss);font-size:0.7rem;">Link Video ↗</span></div>
+            <div style="position:relative;aspect-ratio:3/4;margin:1rem 1.25rem 0;overflow:hidden;border-radius:14px;background:var(--ink);"><img src="images/data-4tiktok.png" alt="@punkkasepnaa TikTok video - Comfort in every bite" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(0,0,0,0.6);color:white;border-radius:999px;padding:0.3rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">TIKTOK</span></div>
+            <div style="padding:1rem 1.25rem 1.25rem;"><strong style="display:block;color:var(--moss-deep);font-size:0.9rem;">1.1M views</strong><span style="display:block;color:#777;font-size:0.75rem;margin-top:0.35rem;">33,400 likes · 400 comments</span><span style="display:inline-block;margin-top:0.75rem;background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.7rem;border-radius:999px;font-size:0.65rem;font-weight:700;">Comfort in every bite</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Top 4 Instagram Reels Subsection -->
+      <div>
+        <h3 class="font-display" style="font-size:1.35rem;font-weight:700;margin-bottom:1.25rem;">Top 4 Instagram Reels</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem;">
+          <a href="https://www.instagram.com/reel/DSprNFzE2nJ/" target="_blank" rel="noopener noreferrer" style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);color:inherit;text-decoration:none;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;padding:1.25rem 1.25rem 0;font-size:0.8rem;font-weight:700;"><span>@ipajuna</span><span style="color:var(--moss);font-size:0.7rem;">Link Video ↗</span></div>
+            <div style="position:relative;aspect-ratio:3/4;margin:1rem 1.25rem 0;overflow:hidden;border-radius:14px;background:var(--ink);"><img src="images/data-1tiktok.png" alt="@ipajuna Instagram Reel - Dummy Cimol" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(0,0,0,0.6);color:white;border-radius:999px;padding:0.3rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">REELS</span></div>
+            <div style="padding:1rem 1.25rem 1.25rem;"><strong style="display:block;color:var(--moss-deep);font-size:0.9rem;">11.7M views</strong><span style="display:block;color:#777;font-size:0.75rem;margin-top:0.35rem;">382,500 likes · 1,423 comments</span><span style="display:inline-block;margin-top:0.75rem;background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.7rem;border-radius:999px;font-size:0.65rem;font-weight:700;">Dummy Cimol</span></div>
+          </a>
+          <a href="https://www.instagram.com/reel/DTFiDdFExaN/" target="_blank" rel="noopener noreferrer" style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);color:inherit;text-decoration:none;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;padding:1.25rem 1.25rem 0;font-size:0.8rem;font-weight:700;"><span>@mabelle.aluna</span><span style="color:var(--moss);font-size:0.7rem;">Link Video ↗</span></div>
+            <div style="position:relative;aspect-ratio:3/4;margin:1rem 1.25rem 0;overflow:hidden;border-radius:14px;background:var(--ink);"><img src="images/data-reels2.png" alt="@mabelle.aluna Instagram Reel - Product Focus" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(0,0,0,0.6);color:white;border-radius:999px;padding:0.3rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">REELS</span></div>
+            <div style="padding:1rem 1.25rem 1.25rem;"><strong style="display:block;color:var(--moss-deep);font-size:0.9rem;">4.7M views</strong><span style="display:block;color:#777;font-size:0.75rem;margin-top:0.35rem;">96,700 likes · 1,460 comments</span><span style="display:inline-block;margin-top:0.75rem;background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.7rem;border-radius:999px;font-size:0.65rem;font-weight:700;">Product Focus</span></div>
+          </a>
+          <a href="https://www.instagram.com/reel/DTXjlIxj2xz/" target="_blank" rel="noopener noreferrer" style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);color:inherit;text-decoration:none;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;padding:1.25rem 1.25rem 0;font-size:0.8rem;font-weight:700;"><span>@punkkasepna</span><span style="color:var(--moss);font-size:0.7rem;">Link Video ↗</span></div>
+            <div style="position:relative;aspect-ratio:3/4;margin:1rem 1.25rem 0;overflow:hidden;border-radius:14px;background:var(--ink);"><img src="images/data-reels3.png" alt="@punkkasepna Instagram Reel - Comfort in every bite" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(0,0,0,0.6);color:white;border-radius:999px;padding:0.3rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">REELS</span></div>
+            <div style="padding:1rem 1.25rem 1.25rem;"><strong style="display:block;color:var(--moss-deep);font-size:0.9rem;">6.2M views</strong><span style="display:block;color:#777;font-size:0.75rem;margin-top:0.35rem;">278,000 likes · 1,828 comments</span><span style="display:inline-block;margin-top:0.75rem;background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.7rem;border-radius:999px;font-size:0.65rem;font-weight:700;">Comfort in every bite</span></div>
+          </a>
+          <a href="https://www.instagram.com/reel/DTUoxgvE4Gn/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);color:inherit;text-decoration:none;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;padding:1.25rem 1.25rem 0;font-size:0.8rem;font-weight:700;"><span>@mabelle.aluna</span><span style="color:var(--moss);font-size:0.7rem;">Link Video ↗</span></div>
+            <div style="position:relative;aspect-ratio:3/4;margin:1rem 1.25rem 0;overflow:hidden;border-radius:14px;background:var(--ink);"><img src="images/data-reels4.png" alt="@mabelle.aluna Instagram Reel - School Story" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(0,0,0,0.6);color:white;border-radius:999px;padding:0.3rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">REELS</span></div>
+            <div style="padding:1rem 1.25rem 1.25rem;"><strong style="display:block;color:var(--moss-deep);font-size:0.9rem;">2.4M views</strong><span style="display:block;color:#777;font-size:0.75rem;margin-top:0.35rem;">35,700 likes · 548 comments</span><span style="display:inline-block;margin-top:0.75rem;background:#f0f4ec;color:var(--moss-deep);padding:0.35rem 0.7rem;border-radius:999px;font-size:0.65rem;font-weight:700;">School Story</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+</main>
+
+  <script>
+    (function(){
+      const header = document.getElementById('site-header');
+      if(header){
+        const updateHeader = function(){
+          const hero = document.querySelector('.page-hero');
+          const threshold = hero ? hero.offsetTop + hero.offsetHeight - header.offsetHeight : 60;
+          header.classList.toggle('page-header-scrolled', window.scrollY > threshold);
+        };
+        updateHeader();
+        window.addEventListener('scroll', updateHeader, {passive:true});
+      }
+
+      const menuButton = document.getElementById('mobile-menu-btn');
+      const nav = document.querySelector('#site-header nav');
+      if(!menuButton || !nav) return;
+
+      menuButton.setAttribute('aria-expanded','false');
+      menuButton.addEventListener('click', function(){
+        const isOpen = nav.classList.toggle('mobile-nav-open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+      });
+      nav.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
+          nav.classList.remove('mobile-nav-open');
+          menuButton.setAttribute('aria-expanded','false');
+        });
+      });
+      document.addEventListener('keydown', function(event){
+        if(event.key === 'Escape'){
+          nav.classList.remove('mobile-nav-open');
+          menuButton.setAttribute('aria-expanded','false');
+        }
+      });
+    })();
+
+    (function(){
+      const main = document.querySelector('main.page-content');
+      const svg = document.getElementById('scroll-road-art');
+      const ghostPath = document.getElementById('road-ghost');
+      const glowPath = document.getElementById('road-glow');
+      const mainPath = document.getElementById('road-main');
+      const stripePath = document.getElementById('road-stripe');
+      const arrowGroup = document.getElementById('road-arrow-group');
+      if(!main || !svg || !mainPath || !arrowGroup) return;
+
+      let lineLength = 0;
+      let scrollFrame = 0;
+      let targetProgress = 0;
+      let currentProgress = 0;
+      let lastFrameTime = 0;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const clamp = function(val, min, max){
+        return Math.min(max, Math.max(min, val));
+      };
+
+      const pointsToSmoothPath = function(pts, tension){
+        if(!pts || pts.length < 2) return "";
+        if(tension === undefined) tension = 0.32;
+        let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+        for(let i = 0; i < pts.length - 1; i++){
+          const p0 = pts[Math.max(i - 1, 0)];
+          const p1 = pts[i];
+          const p2 = pts[i + 1];
+          const p3 = pts[Math.min(i + 2, pts.length - 1)];
+
+          const cp1x = p1.x + (p2.x - p0.x) * tension;
+          const cp1y = p1.y + (p2.y - p0.y) * tension;
+          const cp2x = p2.x - (p3.x - p1.x) * tension;
+          const cp2y = p2.y - (p3.y - p1.y) * tension;
+
+          d += ` C ${cp1x.toFixed(1)} ${cp1y.toFixed(1)}, ${cp2x.toFixed(1)} ${cp2y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
+        }
+        return d;
+      };
+
+      const generateRoadPoints = function(w, h){
+        const isMobile = w < 768;
+        const isTablet = w >= 768 && w < 1024;
+
+        if(isMobile){
+          return [
+            { x: w * 0.12, y: 35 },
+            { x: w * 0.88, y: h * 0.12 },
+            { x: w * 0.10, y: h * 0.25 },
+            { x: w * 0.90, y: h * 0.38 },
+            { x: w * 0.12, y: h * 0.52 },
+            { x: w * 0.88, y: h * 0.65 },
+            { x: w * 0.10, y: h * 0.78 },
+            { x: w * 0.86, y: h * 0.90 },
+            { x: w * 0.90, y: h + 40 }
+          ];
+        } else if(isTablet){
+          return [
+            { x: w * 0.08, y: 45 },
+            { x: w * 0.92, y: h * 0.14 },
+            { x: w * 0.94, y: h * 0.28 },
+            { x: w * 0.08, y: h * 0.38 },
+            { x: w * 0.06, y: h * 0.52 },
+            { x: w * 0.92, y: h * 0.66 },
+            { x: w * 0.90, y: h * 0.80 },
+            { x: w * 0.38, y: h * 0.90 },
+            { x: w * 0.90, y: h + 50 }
+          ];
+        } else {
+          return [
+            { x: w * 0.06, y: 50 },
+            { x: w * 0.92, y: h * 0.12 },
+            { x: w * 0.95, y: h * 0.25 },
+            { x: w * 0.08, y: h * 0.34 },
+            { x: w * 0.05, y: h * 0.48 },
+            { x: w * 0.92, y: h * 0.58 },
+            { x: w * 0.95, y: h * 0.72 },
+            { x: w * 0.08, y: h * 0.82 },
+            { x: w * 0.55, y: h * 0.92 },
+            { x: w * 0.92, y: h + 60 }
+          ];
+        }
+      };
+
+      const getScrollProgress = function(){
+        const rect = main.getBoundingClientRect();
+        const mainTop = rect.top + window.scrollY;
+        const drawingStart = mainTop - window.innerHeight * 0.75;
+        const drawingEnd = mainTop + rect.height - window.innerHeight * 0.40;
+        return clamp((window.scrollY - drawingStart) / Math.max(drawingEnd - drawingStart, 1), 0, 1);
+      };
+
+      const paintRoad = function(progress){
+        if(!lineLength) return;
+        const offset = lineLength * (1 - progress);
+        mainPath.style.strokeDashoffset = String(offset);
+        stripePath.style.strokeDashoffset = String(offset);
+        glowPath.style.strokeDashoffset = String(offset);
+
+        // Dynamic ARCA Mascot Logo travelling at the tip of the road
+        if(progress > 0.005){
+          try {
+            const currentDist = lineLength * progress;
+            const pt = mainPath.getPointAtLength(currentDist);
+            const delta = Math.min(4, lineLength - currentDist);
+            const ptNext = mainPath.getPointAtLength(Math.min(lineLength, currentDist + (delta > 0.5 ? delta : -2)));
+            const rawAngle = delta > 0.5
+              ? Math.atan2(ptNext.y - pt.y, ptNext.x - pt.x) * (180 / Math.PI)
+              : Math.atan2(pt.y - ptNext.y, pt.x - ptNext.x) * (180 / Math.PI);
+            const bankAngle = clamp(rawAngle * 0.35, -35, 35);
+
+            arrowGroup.setAttribute('transform', `translate(${pt.x.toFixed(1)}, ${pt.y.toFixed(1)}) rotate(${bankAngle.toFixed(1)})`);
+            arrowGroup.style.opacity = '1';
+          } catch(e) {
+            arrowGroup.style.opacity = '0';
+          }
+        } else {
+          arrowGroup.style.opacity = '0';
+        }
+      };
+
+      const updateRoad = function(timestamp){
+        scrollFrame = 0;
+        if(!lineLength) return;
+
+        targetProgress = getScrollProgress();
+        if(!lastFrameTime) lastFrameTime = timestamp || performance.now();
+        const elapsed = Math.min((timestamp || performance.now()) - lastFrameTime, 64);
+        lastFrameTime = timestamp || performance.now();
+        // Keep the road and mascot slightly behind the native scroll position so
+        // their movement eases into each update instead of snapping to it.
+        const smoothing = prefersReducedMotion ? 1 : 1 - Math.exp(-elapsed / 150);
+        currentProgress += (targetProgress - currentProgress) * smoothing;
+        if(Math.abs(targetProgress - currentProgress) < 0.00015) currentProgress = targetProgress;
+        paintRoad(currentProgress);
+
+        if(currentProgress !== targetProgress){
+          scrollFrame = window.requestAnimationFrame(updateRoad);
+        }
+      };
+
+      const requestRoadUpdate = function(){
+        targetProgress = getScrollProgress();
+        if(!scrollFrame){
+          lastFrameTime = 0;
+          scrollFrame = window.requestAnimationFrame(updateRoad);
+        }
+      };
+
+      const initRoad = function(){
+        const w = main.clientWidth;
+        const h = main.clientHeight;
+        if(!w || !h) return;
+
+        svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        svg.style.width = w + 'px';
+        svg.style.height = h + 'px';
+
+        const isMobile = w < 768;
+        const isTablet = w >= 768 && w < 1024;
+        const strokeW = isMobile ? 22 : (isTablet ? 28 : 36);
+        const stripeW = isMobile ? 2.5 : (isTablet ? 3.2 : 4);
+        const logoSize = isMobile ? 42 : (isTablet ? 50 : 62);
+
+        ghostPath.style.strokeWidth = strokeW + 'px';
+        glowPath.style.strokeWidth = (strokeW + 16) + 'px';
+        mainPath.style.strokeWidth = strokeW + 'px';
+        stripePath.style.strokeWidth = stripeW + 'px';
+
+        const logoImg = document.getElementById('road-arca-logo');
+        if(logoImg){
+          logoImg.setAttribute('width', logoSize);
+          logoImg.setAttribute('height', logoSize);
+          logoImg.setAttribute('x', -logoSize / 2);
+          logoImg.setAttribute('y', -logoSize / 2);
+        }
+
+        const points = generateRoadPoints(w, h);
+        const pathD = pointsToSmoothPath(points, 0.32);
+
+        ghostPath.setAttribute('d', pathD);
+        glowPath.setAttribute('d', pathD);
+        mainPath.setAttribute('d', pathD);
+        stripePath.setAttribute('d', pathD);
+
+        try {
+          lineLength = mainPath.getTotalLength();
+        } catch(e) {
+          lineLength = 3000;
+        }
+
+        [glowPath, mainPath, stripePath].forEach(function(p){
+          p.style.strokeDasharray = lineLength + ' ' + lineLength;
+          p.style.strokeDashoffset = String(lineLength);
+        });
+
+        targetProgress = getScrollProgress();
+        currentProgress = targetProgress;
+        paintRoad(currentProgress);
+      };
+
+      let resizeTimer = 0;
+      initRoad();
+      window.addEventListener('scroll', requestRoadUpdate, {passive:true});
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function(){
+          initRoad();
+          requestRoadUpdate();
+        }, 100);
+      }, {passive:true});
+      window.addEventListener('load', initRoad, {once:true});
+    })();
+
+  </script>
+
+  <!-- Footer -->
+  <footer style="background:var(--ink);color:var(--silver-2);padding:4rem 2rem 2rem;">
+    <div style="max-width:1200px;margin:auto;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-bottom:3rem;">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img src="images/trans_logo.png" alt="ARCA" style="width:32px;height:32px;filter:brightness(0)invert(1);" />
+            <span class="font-display font-bold text-xl text-white">arca</span>
+          </div>
+          <p style="font-size:0.875rem;line-height:1.7;">Independent creative agency transforming business challenges into ideas people remember.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">PAGES</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+            <li><a href="index.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Home</a></li>
+            <li><a href="about.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">About</a></li>
+            <li><a href="services.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">MORE</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+            <li><a href="case-studies.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Case Studies</a></li>
+            <li><a href="articles.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Articles</a></li>
+            <li><a href="contact.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">CONTACT</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+            <li><a href="mailto:office@aroundarca.id" style="color:inherit;text-decoration:none;">office@aroundarca.id</a></li>
+            <li><a href="tel:+62895334842374" style="color:inherit;text-decoration:none;">+62 895 3348 42374</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Jl+Biologi+No+19+Bandung" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Jl Biologi No. 19, Bandung ↗</a></li>
+            <li><a href="https://instagram.com/aroundarca" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Instagram ↗</a></li>
+            <li><a href="https://id.linkedin.com/company/arca-creative-agency" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">LinkedIn ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;text-align:center;font-size:0.8rem;">
+        © 2024 ARCA Creative Agency. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
