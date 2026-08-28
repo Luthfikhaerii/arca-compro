@@ -463,6 +463,45 @@
     .story-orbit::after{ animation:none;transform:translateX(1.62rem); }
     .about-ornament--ring{ animation:none; }
   }
+
+  /* ── SITE FOOTER STYLES (sama dengan index.html) ── */
+  .site-footer{
+    background:var(--ink);
+    color:var(--silver-2);
+    padding:5rem 2rem 2rem;
+  }
+  .site-footer-inner{ max-width:1200px;margin:0 auto; }
+  .site-footer-grid{
+    display:grid;
+    grid-template-columns:minmax(240px,1.4fr) repeat(2,minmax(150px,0.8fr)) minmax(220px,1fr);
+    gap:3rem;
+    padding-bottom:3rem;
+  }
+  .site-footer-brand-mark{ display:flex;align-items:center;gap:0.7rem;margin-bottom:1.25rem; }
+  .site-footer-brand-mark img{ width:36px;height:36px;object-fit:contain;filter:brightness(0) invert(1); }
+  .site-footer-brand-mark span{ color:white;font-size:1.5rem;font-weight:800; }
+  .site-footer p{ margin:0;max-width:280px;font-size:0.9rem;line-height:1.7; }
+  .site-footer h2{ margin:0 0 1.1rem;color:white;font-size:0.75rem;letter-spacing:0.14em; }
+  .site-footer ul{ list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.75rem; }
+  .site-footer a{ color:inherit;text-decoration:none;transition:color 0.2s ease; }
+  .site-footer a:hover{ color:var(--moss-light); }
+  .site-footer-contact{ display:flex;flex-direction:column;gap:0.8rem;font-size:0.9rem;line-height:1.5; }
+  .site-footer-contact a:first-child{ color:white;font-weight:600; }
+  .site-footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    border-top:1px solid rgba(255,255,255,0.12);
+    padding-top:1.5rem;
+    font-size:0.78rem;
+    line-height:1.5;
+  }
+  @media(max-width:767px){
+    .site-footer{ padding:3.5rem 1.25rem 1.5rem; }
+    .site-footer-grid{ grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 1.5rem; }
+    .site-footer-brand{ grid-column:1 / -1; }
+    .site-footer-bottom{ flex-direction:column; }
+  }
 </style>
 </head>
 <body class="arca-inner-page">
@@ -771,48 +810,57 @@
   </script>
 
 
-  <!-- Footer -->
-  <footer style="background:var(--ink);color:var(--silver-2);padding:4rem 2rem 2rem;">
-    <div style="max-width:1200px;margin:auto;">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-bottom:3rem;">
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <img src="images/trans_logo.png" alt="ARCA" style="width:32px;height:32px;filter:brightness(0)invert(1);" />
-            <span class="font-display font-bold text-xl text-white">arca</span>
+  <!-- ============================================================ -->
+  <!-- FOOTER - SAMA DENGAN INDEX.HTML                               -->
+  <!-- ============================================================ -->
+  <footer class="site-footer" aria-label="ARCA site footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-grid">
+        <div class="site-footer-brand">
+          <div class="site-footer-brand-mark">
+            <img src="images/trans_logo.png" alt="ARCA" />
+            <span class="font-display">arca</span>
           </div>
-          <p style="font-size:0.875rem;line-height:1.7;">Independent creative agency transforming business challenges into ideas people remember.</p>
+          <p>Independent creative agency yang mengubah tantangan bisnis menjadi ide yang diingat banyak orang.</p>
         </div>
+
         <div>
-          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">PAGES</h4>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
-            <li><a href="index.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Home</a></li>
-            <li><a href="about.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">About</a></li>
-            <li><a href="services.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Services</a></li>
+          <h2 class="font-display">PAGES</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Our Service</a></li>
           </ul>
         </div>
+
         <div>
-          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">MORE</h4>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
-            <li><a href="case-studies.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Case Studies</a></li>
-            <li><a href="articles.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Articles</a></li>
-            <li><a href="contact.html" style="color:inherit;text-decoration:none;" class="hover:text-[#aebd5f]">Contact</a></li>
+          <h2 class="font-display">EXPLORE</h2>
+          <ul>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="https://wa.me/62895334842374">Contact</a></li>
+            <li><a href="#hero">Back to Top</a></li>
           </ul>
         </div>
+
         <div>
-          <h4 class="font-bold text-white mb-4 text-sm tracking-wider">CONTACT</h4>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
-            <li><a href="mailto:office@aroundarca.id" style="color:inherit;text-decoration:none;">office@aroundarca.id</a></li>
-            <li><a href="tel:+62895334842374" style="color:inherit;text-decoration:none;">+62 895 3348 42374</a></li>
-            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Jl+Biologi+No+19+Bandung" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Jl Biologi No. 19, Bandung ↗</a></li>
-            <li><a href="https://instagram.com/aroundarca" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Instagram ↗</a></li>
-            <li><a href="https://id.linkedin.com/company/arca-creative-agency" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">LinkedIn ↗</a></li>
-          </ul>
+          <h2 class="font-display">CONTACT</h2>
+          <div class="site-footer-contact">
+            <a href="mailto:office@aroundarca.id">office@aroundarca.id</a>
+            <a href="tel:+62895334842374">+62 895 3348 42374</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Jl+Biologi+No+19+Bandung" target="_blank" rel="noopener noreferrer">Jl Biologi No. 19, Bandung ↗</a>
+            <a href="https://instagram.com/aroundarca" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+            <a href="https://id.linkedin.com/company/arca-creative-agency" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
         </div>
       </div>
-      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;text-align:center;font-size:0.8rem;">
-        © 2024 ARCA Creative Agency. All rights reserved.
+
+      <div class="site-footer-bottom">
+        <span>© 2024 ARCA Creative Agency. All rights reserved.</span>
+        <span>Made for ideas people remember.</span>
       </div>
     </div>
   </footer>
+  <!-- END FOOTER -->
+
 </body>
 </html>
