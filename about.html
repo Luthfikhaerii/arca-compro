@@ -14,6 +14,7 @@
     --ink: #0a0d08; --ink-2: #121a0d; --moss-deep: #4c5a1e; --moss: #7c8f3a;
     --moss-light: #aebd5f; --silver-1: #f7f7f2; --silver-2: #a9a9a1; --silver-3: #55554e;
     --paper: #faf9f4; --paper-ink: #181c11;
+    --arca-green: #51630F; --moss-yellow: #C5BC58; --cream: #F3EFE4; --terracotta: #7B2C06; --butter-yellow: #E9E55C;
   }
   *{ margin:0; padding:0; box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
@@ -286,16 +287,22 @@
   .story-pill:hover{ background:var(--moss-light);color:var(--ink);transform:translateY(-3px); }
   .purpose-section{
     position:relative;isolation:isolate;margin-bottom:clamp(5rem,10vw,8rem);
-    padding:clamp(1rem,3vw,2rem) 0;
+    padding:clamp(3.5rem,7vw,5.5rem) 0;
   }
   .purpose-section::before{
     content:'';position:absolute;z-index:-1;left:50%;top:0;width:100vw;height:100%;
-    transform:translateX(-50%);background:linear-gradient(180deg,transparent,rgba(174,189,95,0.07),transparent);
+    transform:translateX(-50%);
+    background:
+      radial-gradient(120% 90% at 82% 8%,rgba(197,188,88,0.16),transparent 55%),
+      radial-gradient(140% 100% at 10% 100%,rgba(81,99,15,0.4),transparent 60%),
+      linear-gradient(160deg,var(--ink) 0%,var(--ink-2) 55%,var(--ink) 100%);
   }
   .purpose-heading{ display:grid;grid-template-columns:0.7fr 1.3fr;gap:2rem;align-items:end;margin-bottom:clamp(2rem,5vw,4rem); }
-  .purpose-heading h2{ margin:0;font-size:clamp(3rem,7vw,6rem);font-weight:800;line-height:0.9;letter-spacing:-0.06em; }
-  .purpose-heading h2 span{ color:var(--moss);font-style:italic;font-weight:500; }
-  .purpose-heading-copy{ max-width:30rem;justify-self:end;color:var(--silver-3);font-size:0.95rem;line-height:1.75; }
+  .purpose-heading .section-kicker{ color:var(--moss-yellow); }
+  .purpose-heading .section-kicker::before{ background:var(--moss-yellow); }
+  .purpose-heading h2{ margin:0;font-size:clamp(3rem,7vw,6rem);font-weight:800;line-height:0.9;letter-spacing:-0.06em;color:var(--cream); }
+  .purpose-heading h2 span{ color:var(--moss-yellow);font-style:italic;font-weight:500; }
+  .purpose-heading-copy{ max-width:30rem;justify-self:end;color:rgba(243,239,228,0.72);font-size:0.95rem;line-height:1.75; }
   .purpose-grid{ display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem);perspective:1200px; }
   .purpose-card{
     --card-x:50%;--card-y:50%;position:relative;min-height:clamp(28rem,45vw,36rem);overflow:hidden;
@@ -303,7 +310,7 @@
     display:flex;flex-direction:column;transform-style:preserve-3d;
     transition:transform 0.18s ease-out,box-shadow 0.4s ease,border-color 0.4s ease;
   }
-  .purpose-card--vision{ border:1px solid rgba(24,28,17,0.12);background:rgba(255,255,255,0.78);box-shadow:0 20px 55px rgba(24,28,17,0.08); }
+  .purpose-card--vision{ border:1px solid rgba(24,28,17,0.12);background:#f7f7f2;box-shadow:0 20px 55px rgba(24,28,17,0.08); }
   .purpose-card--mission{ color:var(--paper-ink);border:1px solid rgba(124,143,58,0.28);background:linear-gradient(145deg,#f7f7f2 0%,#eef1df 68%,#dfe6b9 145%);box-shadow:0 24px 60px rgba(76,90,30,0.14); }
   .purpose-card::before{
     content:'';position:absolute;inset:0;pointer-events:none;opacity:0;
@@ -542,7 +549,7 @@
       <div class="purpose-heading reveal-on-scroll">
         <div>
           <p class="section-kicker">Our direction</p>
-          <h2 id="purpose-title" class="font-display">Vision <span>&amp;</span><br>Mission</h2>
+          <h2 id="purpose-title" class="font-display" style="color: var(--silver-1);">Vision <span>&amp;</span><br>Mission</h2>
         </div>
         <p class="purpose-heading-copy">The belief that guides where we are going—and the commitment that shapes every piece of work we create along the way.</p>
       </div>
