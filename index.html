@@ -1242,21 +1242,6 @@
     });
   })();
 
-  (function initSmoothScroll(){
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    // Keep native wheel/trackpad scrolling responsive. The previous frame-by-frame
-    // wheel interpolation introduced lag and fought with scrollbar-driven scrolling.
-    function lockTo(y){
-      const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-      const top = clamp(y, 0, maxScroll);
-      window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    }
-    window.__arcaLegacySmoothScroll = { lockTo: lockTo };
-    window.addEventListener('wheel', function(event){
-      const capabilitiesGate = window.__arcaCapabilitiesScrollGate;
-      if (capabilitiesGate && capabilitiesGate.consumeWheel(event)) event.preventDefault();
-    }, { passive: false, capture: true });
-  })();
 </script>
 <script>
   // ── PRELOADER LOGIC ──
@@ -1549,10 +1534,10 @@
     /* Reference capabilities section */
     #capabilities-scroll{
       position:relative;
-      height:100vh;
+      height:400vh;
       min-height:36rem;
       isolation:isolate;
-      overflow:hidden;
+      overflow:visible;
       background:
         radial-gradient(120% 90% at 82% 8%, rgba(124,143,58,0.18), transparent 55%),
         radial-gradient(140% 100% at 10% 100%, rgba(76,90,30,0.32), transparent 60%),
@@ -1571,10 +1556,12 @@
     }
 
     .capabilities-sticky{
-      position:relative;
+      position:sticky;
+      top:0;
       z-index:1;
       width:100%;
-      height:100%;
+      height:100vh;
+      min-height:36rem;
       overflow:hidden;
       color:var(--paper);
     }
@@ -1644,7 +1631,7 @@
       line-height:1;
       letter-spacing:-0.02em;
       transform:translate(-50%,-50%);
-      transition:transform 0.82s cubic-bezier(0.16,1,0.3,1),opacity 0.48s cubic-bezier(0.16,1,0.3,1);
+      transition:transform 0.82s cubic-bezier(0.16,1,0.3,1),opacity 0.48s cubic-bezier(0.16,1,0.3,1),text-shadow 0.48s ease;
     }
 
     .capabilities-number.is-active{ opacity:1; }
@@ -1936,7 +1923,7 @@
     }
 
     @media(max-width:640px){
-      #capabilities-scroll{ min-height:38rem; height:100svh; }
+      #capabilities-scroll{ min-height:38rem; height:400vh; }
       .capabilities-label{ padding-inline:1rem; letter-spacing:0.2em; }
       .capabilities-circle-wrap{ width:24rem; }
       .capabilities-circle{ width:min(20rem,58vh); transform:translateX(-67%); }
@@ -2026,18 +2013,7 @@
 
       const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const stepDegrees=90;
-      const transitionMs=560;
-      const cooldownMs=80;
       let activeIndex=0;
-      let locked=false;
-      let gateEngaged=false;
-      let releasedDirection=0;
-      let previousScrollY=window.scrollY;
-      let unlockTimer=0;
-      let touchStartY=null;
-      let touchStartedInside=false;
-      let autoAdvanceTimer=0;
-      let autoAdvanceLast=0;
 
       content.innerHTML=services.map(function(service){
         return '<article class="capabilities-block" aria-hidden="true">'+
@@ -2084,187 +2060,39 @@
         number.style.top=(50-50*Math.cos(radians))+'%';
       });
 
-      function applyState(animateLogo){
+      function applyState(){
         ring.style.transform='rotate('+(activeIndex*-stepDegrees)+'deg)';
-        // Keep the ARCA mark upright. The orbit/ring carries the step rotation;
-        // rotating the logo itself made it flip direction when scrolling upward.
         orbitLogo.style.setProperty('--cap-logo-angle','0deg');
         ornaments.style.setProperty('--cap-ornament-shift',(activeIndex*7)+'%');
-        if(animateLogo){
-          orbitLogo.classList.remove('is-step-spin');
-          void orbitLogo.offsetWidth;
-          orbitLogo.classList.add('is-step-spin');
-        }
         numbers.forEach(function(number,index){
           const isActive=index===activeIndex;
           number.style.transform='translate(-50%,-50%) rotate('+(activeIndex*stepDegrees)+'deg)';
           number.classList.toggle('is-active',isActive);
         });
-        blocks.forEach(function(block,index){ block.classList.toggle('is-visible',index===activeIndex); });
+        blocks.forEach(function(block,index){
+          const isActive=index===activeIndex;
+          block.classList.toggle('is-visible',isActive);
+          block.setAttribute('aria-hidden',String(!isActive));
+        });
         steps.forEach(function(step,index){ step.classList.toggle('is-active',index===activeIndex); });
         counter.textContent=services[activeIndex].number+' / 04';
         if(hint) hint.style.opacity=activeIndex===0?'1':'0';
       }
 
-      function sectionTop(){ return section.getBoundingClientRect().top+window.scrollY; }
-      function sectionActive(){
+      function updateFromScroll(){
+        if(reducedMotion) return;
         const rect=section.getBoundingClientRect();
-        const midpoint=window.innerHeight/2;
-        return rect.top<=midpoint&&rect.bottom>=midpoint;
-      }
-      function entering(direction){
-        const rect=section.getBoundingClientRect();
-        return direction>0
-          ? rect.top>0&&rect.top<=window.innerHeight*0.55
-          : rect.bottom<window.innerHeight&&rect.bottom>=window.innerHeight*0.45;
-      }
-      function engageGate(){
-        gateEngaged=true;
-        releasedDirection=0;
-        // Anchor once when entering the step section. Scrollbar and trackpad
-        // movement must not be pulled back by a scroll listener.
-        const top=sectionTop();
-        if(Math.abs(window.scrollY-top)>2) window.scrollTo({top,behavior:'auto'});
-      }
-      function boundary(direction){
-        return (direction>0&&activeIndex===services.length-1)||(direction<0&&activeIndex===0);
-      }
-      function unlockLater(){
-        window.clearTimeout(unlockTimer);
-        unlockTimer=window.setTimeout(function(){ locked=false; },transitionMs+cooldownMs);
-      }
-      function snap(direction){
-        const next=Math.max(0,Math.min(services.length-1,activeIndex+direction));
-        if(locked||next===activeIndex) return false;
-        activeIndex=next;
-        locked=true;
-        autoAdvanceLast=Date.now();
-        applyState(true);
-        unlockLater();
-        return true;
+        const progress=Math.max(0,Math.min(0.9999,(-rect.top)/Math.max(section.offsetHeight-window.innerHeight,1)));
+        const nextIndex=Math.min(services.length-1,Math.floor(progress*services.length));
+        if(nextIndex===activeIndex) return;
+        activeIndex=nextIndex;
+        applyState();
       }
 
-      function startAutoAdvance(){
-        if(reducedMotion||autoAdvanceTimer) return;
-        autoAdvanceLast=Date.now();
-        autoAdvanceTimer=window.setInterval(function(){
-          if(!sectionActive()) return;
-          if(Date.now()-autoAdvanceLast<4000||locked) return;
-          autoAdvanceLast=Date.now();
-          if(activeIndex<services.length-1){
-            gateEngaged=true;
-            snap(1);
-          }else{
-            gateEngaged=false;
-          }
-        },250);
-      }
-
-      function stopAutoAdvance(){
-        if(autoAdvanceTimer){
-          window.clearInterval(autoAdvanceTimer);
-          autoAdvanceTimer=0;
-        }
-      }
-
-      function consumeWheel(event){
-        if(reducedMotion) return false;
-        const direction=event.deltaY>0?1:event.deltaY<0?-1:0;
-        let justEngaged=false;
-        if(!direction) return false;
-        if(!gateEngaged&&releasedDirection===direction) return false;
-
-        if(!gateEngaged&&(entering(direction)||sectionActive())){
-          activeIndex=direction>0?0:services.length-1;
-          applyState(false);
-          engageGate();
-          justEngaged=true;
-        }
-        if(!gateEngaged) return false;
-        if(justEngaged) return true;
-
-        if(boundary(direction)&&!locked){
-          gateEngaged=false;
-          releasedDirection=direction;
-          return false;
-        }
-        snap(direction);
-        return true;
-      }
-
-      window.__arcaCapabilitiesScrollGate={consumeWheel:consumeWheel,getLockY:sectionTop};
-
-      if(!window.__arcaLegacySmoothScroll){
-        window.addEventListener('wheel',function(event){
-          if(consumeWheel(event)) event.preventDefault();
-        },{passive:false,capture:true});
-      }
-
-      window.addEventListener('scroll',function(){
-        const currentScrollY=window.scrollY;
-        const direction=currentScrollY>previousScrollY?1:currentScrollY<previousScrollY?-1:0;
-        previousScrollY=currentScrollY;
-        const rect=section.getBoundingClientRect();
-        const midpoint=window.innerHeight/2;
-        if(releasedDirection>0&&rect.bottom<midpoint) releasedDirection=0;
-        if(releasedDirection<0&&rect.top>midpoint) releasedDirection=0;
-        // Never re-lock during native scrolling or scrollbar drags.
-        if(gateEngaged&&direction&&!sectionActive()) gateEngaged=false;
-        if(sectionActive()) startAutoAdvance();
-        else stopAutoAdvance();
-      },{passive:true});
-
-      window.addEventListener('visibilitychange',function(){
-        if(document.hidden) stopAutoAdvance();
-        else if(sectionActive()) startAutoAdvance();
-      });
-
-      window.addEventListener('touchstart',function(event){
-        if(reducedMotion||!event.touches.length) return;
-        touchStartedInside=sectionActive();
-        touchStartY=touchStartedInside?event.touches[0].clientY:null;
-      },{passive:true});
-
-      window.addEventListener('touchmove',function(event){
-        if(reducedMotion||!touchStartedInside||touchStartY===null||!event.touches.length) return;
-        const distance=touchStartY-event.touches[0].clientY;
-        if(Math.abs(distance)<8) return;
-        const direction=distance>0?1:-1;
-        if(boundary(direction)&&!locked){
-          gateEngaged=false;
-          releasedDirection=direction;
-          return;
-        }
-        event.preventDefault();
-        engageGate();
-      },{passive:false,capture:true});
-
-      window.addEventListener('touchend',function(event){
-        if(reducedMotion||!touchStartedInside||touchStartY===null||!event.changedTouches.length) return;
-        const distance=touchStartY-event.changedTouches[0].clientY;
-        touchStartY=null;
-        touchStartedInside=false;
-        if(Math.abs(distance)>=40) snap(distance>0?1:-1);
-      },{passive:true});
-
-      window.addEventListener('keydown',function(event){
-        if(reducedMotion||event.repeat||!sectionActive()) return;
-        let direction=0;
-        if(event.key==='ArrowDown'||event.key==='PageDown'||event.key==='End') direction=1;
-        if(event.key==='ArrowUp'||event.key==='PageUp'||event.key==='Home') direction=-1;
-        if(!direction) return;
-        if(boundary(direction)&&!locked){
-          gateEngaged=false;
-          releasedDirection=direction;
-          return;
-        }
-        event.preventDefault();
-        engageGate();
-        snap(direction);
-      });
-
-      applyState(false);
-      if(sectionActive()) startAutoAdvance();
+      applyState();
+      window.addEventListener('scroll',updateFromScroll,{passive:true});
+      window.addEventListener('resize',updateFromScroll);
+      updateFromScroll();
     })();
   </script>
   <!-- END CAPABILITIES SECTION -->
